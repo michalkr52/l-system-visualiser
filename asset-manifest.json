@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/l-system-visualiser/static/css/main.31d6cfe0.css",
+    "main.js": "/l-system-visualiser/static/js/main.f6a6974b.js",
+    "index.html": "/l-system-visualiser/index.html",
+    "main.f6a6974b.js.map": "/l-system-visualiser/static/js/main.f6a6974b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.f6a6974b.js"
+  ]
+}
