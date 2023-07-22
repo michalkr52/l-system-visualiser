@@ -1,1 +1,21 @@
+#app {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
 
+.settings-panel {
+    background-color: var(--bg-panel);
+    width: 300px;
+}
+
+.settings-title {
+    margin: 0;
+    padding: 5px;
+    font-size: 1.2rem;
+    text-align: center;
+}
