@@ -1,0 +1,15 @@
+.add-rule {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 0px;
+    color: var(--text-primary);
+    padding: 2px;
+    outline: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.add-rule:hover {
+    color: #28d1b6;
+    cursor: pointer;
+}

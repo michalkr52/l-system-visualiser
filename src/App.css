@@ -14,8 +14,16 @@
 }
 
 .settings-title {
-    margin: 0;
+    margin: 5px 0 10px 0;
     padding: 5px;
     font-size: 1.2rem;
     text-align: center;
+}
+
+.settings-content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
 }

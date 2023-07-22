@@ -4,14 +4,16 @@ import { createContext, useLayoutEffect, useState } from "react";
 const themes = {
     "light": {
         "bg": "#ffffff",
-        "panel-bg": "#f0f0f0",
+        "bg-panel": "#f0f0f0",
         "border": "#d9d9d9",
+        "border-focus": "#bfbfbf",
         "text-primary": "#000000"
     },
     "dark": {
         "bg": "#181818",
-        "panel-bg": "#1f1f1f",
+        "bg-panel": "#1f1f1f",
         "border": "#2a2a2a",
+        "border-focus": "#3d3d3d",
         "text-primary": "#fafafa"
     }
 }

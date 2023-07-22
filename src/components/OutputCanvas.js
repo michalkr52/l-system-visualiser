@@ -1,6 +1,7 @@
 function OutputCanvas() {
     return (
-        <canvas id="output-canvas"></canvas>
+        // todo: variable size, responsive (this one fits a 1200px wide app)
+        <canvas id="output-canvas" width="600" height="450"></canvas>
     );
 }
 
