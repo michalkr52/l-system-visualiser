@@ -8,7 +8,7 @@ function RuleEntry(props) {
 
     return (
         <div className="rule-entry">
-            {index}:
+            {index + 1}.
             <input type="text" placeholder="predecessor" value={predecessor} 
                 onChange={e => updateRulePredecessor(index, e.target.value)}/>
             &rarr;

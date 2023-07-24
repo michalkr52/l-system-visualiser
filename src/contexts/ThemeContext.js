@@ -21,6 +21,7 @@ const themes = {
 
 // todo: extend this to allow for more themes
 
+// default context values
 export const ThemeContext = createContext({
     dark: false,
     toggle: () => {}

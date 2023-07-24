@@ -4,13 +4,21 @@
     background-color: var(--bg);
     color: var(--text-primary);
     border: 1px solid var(--border);
-    border-radius: 10px;
     overflow: hidden;
 }
 
 .settings-panel {
     background-color: var(--bg-panel);
     width: 300px;
+}
+
+#main-settings {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    height: 100%;
 }
 
 .settings-title {

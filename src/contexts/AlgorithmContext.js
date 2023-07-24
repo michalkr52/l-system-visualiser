@@ -1,8 +1,11 @@
 import { createContext } from 'react';
 import { useState } from 'react';
 
+// default context values
 export const AlgorithmContext = createContext({
     rules: [],
+    axiom: "",
+    setAxiom: (value) => {},
     addRule: (predecessor, successor) => {},
     removeRule: (index) => {},
     updateRulePredecessor: (index, value) => {},
@@ -11,6 +14,7 @@ export const AlgorithmContext = createContext({
 
 export function AlgorithmProvider(props) {
     const [rules, setRules] = useState([]);
+    const [axiom, setAxiom] = useState("");
 
     const addRule = (predecessor, successor) => {
         rules.push({
@@ -44,6 +48,8 @@ export function AlgorithmProvider(props) {
     return (
         <AlgorithmContext.Provider value={{
             rules: rules,
+            axiom: axiom,
+            setAxiom: setAxiom,
             addRule: addRule,
             removeRule: removeRule,
             updateRulePredecessor: updateRulePredecessor,
