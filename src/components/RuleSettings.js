@@ -1,10 +1,10 @@
 import "./RuleSettings.css";
 import RuleEntry from "./RuleEntry";
-import { RuleContext } from "../contexts/RuleContext";
+import { AlgorithmContext } from "../contexts/AlgorithmContext";
 import { useContext } from "react";
 
 function RuleSettings() {
-    const { rules, addRule } = useContext(RuleContext);
+    const { rules, addRule } = useContext(AlgorithmContext);
 
     // todo: add a scrollbar to the rules list
     return (

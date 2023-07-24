@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { useState } from 'react';
 
-export const RuleContext = createContext({
+export const AlgorithmContext = createContext({
     rules: [],
     addRule: (predecessor, successor) => {},
     removeRule: (index) => {},
@@ -9,7 +9,7 @@ export const RuleContext = createContext({
     updateRuleSuccessor: (index, value) => {}
 });
 
-export function RuleProvider(props) {
+export function AlgorithmProvider(props) {
     const [rules, setRules] = useState([]);
 
     const addRule = (predecessor, successor) => {
@@ -42,7 +42,7 @@ export function RuleProvider(props) {
     };
 
     return (
-        <RuleContext.Provider value={{
+        <AlgorithmContext.Provider value={{
             rules: rules,
             addRule: addRule,
             removeRule: removeRule,
@@ -50,6 +50,6 @@ export function RuleProvider(props) {
             updateRuleSuccessor: updateRuleSuccessor
         }}>
             {props.children}
-        </RuleContext.Provider>
+        </AlgorithmContext.Provider>
     );
 }

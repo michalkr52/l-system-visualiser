@@ -1,10 +1,10 @@
 import "./RuleEntry.css";
 import { useContext } from "react";
-import { RuleContext } from "../contexts/RuleContext";
+import { AlgorithmContext } from "../contexts/AlgorithmContext";
 
 function RuleEntry(props) {
     const { index, predecessor, successor } = props;
-    const { removeRule, updateRulePredecessor, updateRuleSuccessor } = useContext(RuleContext);
+    const { removeRule, updateRulePredecessor, updateRuleSuccessor } = useContext(AlgorithmContext);
 
     return (
         <div className="rule-entry">
