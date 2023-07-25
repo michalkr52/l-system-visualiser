@@ -2,30 +2,34 @@ import "./App.css";
 import OutputCanvas from "./components/OutputCanvas";
 import RuleSettings from "./components/RuleSettings";
 import AxiomSettings from "./components/AxiomSettings";
+import OutputTextbox from "./components/OutputTextbox";
+import StepControls from "./components/StepControls";
 import { useContext } from "react";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 
 
 function App() {
-    const { dark, toggle } = useContext(ThemeContext);
+    const { toggle } = useContext(ThemeContext);
 
     return (
         <div id="app">
-            <div className={"settings-panel settings-panel-left"}>
-                <div id="main-settings">
-                    <AlgorithmProvider>
+            <AlgorithmProvider>
+                <div className={"settings-panel settings-panel-left"}>
+                    <div id="main-settings">
                         <RuleSettings />
                         <AxiomSettings />
-                    </AlgorithmProvider>
+                    </div>
                 </div>
-            </div>
-            <div className="output-canvas-container">
-                <OutputCanvas />
-            </div>
-            <div className={"settings-panel settings-panel-right"}>
-                <button onClick={toggle}>Theme toggle (PLACEHOLDER)</button>
-            </div>
+                <div className="output-canvas-container">
+                    <OutputCanvas />
+                    <OutputTextbox />
+                </div>
+                <div className={"settings-panel settings-panel-right"}>
+                    <button onClick={toggle}>Theme toggle (PLACEHOLDER)</button>
+                    <StepControls />
+                </div>
+            </AlgorithmProvider>
         </div>
   );
 }

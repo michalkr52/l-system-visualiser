@@ -5,6 +5,8 @@ import { useState } from 'react';
 export const AlgorithmContext = createContext({
     rules: [],
     axiom: "",
+    output: [],
+    displayedStep: 0,
     setAxiom: (value) => {},
     addRule: (predecessor, successor) => {},
     removeRule: (index) => {},
@@ -15,6 +17,8 @@ export const AlgorithmContext = createContext({
 export function AlgorithmProvider(props) {
     const [rules, setRules] = useState([]);
     const [axiom, setAxiom] = useState("");
+    const [output, setOutput] = useState([]);
+    const [displayedStep, setDisplayedStep] = useState(0);
 
     const addRule = (predecessor, successor) => {
         rules.push({
@@ -45,11 +49,24 @@ export function AlgorithmProvider(props) {
         setRules([...rules]);
     };
 
+    const incrementDisplayedStep = () => {
+        setDisplayedStep(displayedStep + 1);
+    };
+
+    const decrementDisplayedStep = () => {
+        if (displayedStep > 0) setDisplayedStep(displayedStep - 1);
+    };
+
     return (
         <AlgorithmContext.Provider value={{
             rules: rules,
             axiom: axiom,
+            output: output,
+            displayedStep: displayedStep,
             setAxiom: setAxiom,
+            setOutput: setOutput,
+            incrementDisplayedStep: incrementDisplayedStep,
+            decrementDisplayedStep: decrementDisplayedStep,
             addRule: addRule,
             removeRule: removeRule,
             updateRulePredecessor: updateRulePredecessor,

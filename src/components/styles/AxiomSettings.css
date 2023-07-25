@@ -5,11 +5,11 @@
     align-items: center;
     width: 100%;
     padding: 5px;
-    margin: auto 0 10px 0;
 }
 
 #axiom-settings .axiom-label {
     margin-right: 10px;
+    user-select: none;
 }
 
 #axiom-settings .axiom-input {
@@ -20,4 +20,8 @@
     margin: 3px 6px;
     width: 50%;
     outline: none;
+}
+
+#axiom-settings .axiom-input:focus {
+    border: 1px solid var(--border-focus);
 }

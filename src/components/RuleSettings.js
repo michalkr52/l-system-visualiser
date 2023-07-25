@@ -1,4 +1,4 @@
-import "./RuleSettings.css";
+import "./styles/RuleSettings.css";
 import RuleEntry from "./RuleEntry";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
 import { useContext } from "react";

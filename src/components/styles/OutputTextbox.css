@@ -1,0 +1,41 @@
+.output-textbox {
+    width: 100%;
+}
+
+.output-textbox-title {
+    font-size: 0.8rem;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    color: var(--text-primary);
+    background: var(--bg-panel);
+    padding: 5px;
+    border-top: 1px solid var(--border);
+    user-select: none;
+}
+
+.output-textbox textarea {
+    width: 100%;
+    height: 150px;
+    margin: 0;
+    resize: none;
+    border: none;
+    border-top: 1px solid var(--border);
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    background-color: var(--bg-panel);
+    padding: 0.75rem;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.25;
+    text-align: left;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
