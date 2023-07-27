@@ -4,8 +4,8 @@ import { AlgorithmContext } from "../contexts/AlgorithmContext";
 import { useContext } from "react";
 
 function RuleSettings() {
-    const { rules, addRule } = useContext(AlgorithmContext);
-
+    const { rules, confirmed, addRule } = useContext(AlgorithmContext);
+    
     // todo: add a scrollbar to the rules list
     return (
         <div id="rule-settings">
@@ -21,7 +21,8 @@ function RuleSettings() {
                         />
                     );
                 })}
-                <button className="add-rule" onClick={addRule.bind(null, "", "")}>+</button>
+                <button className={"add-rule" + (confirmed ? " disabled" : "")}
+                    onClick={addRule.bind(null, "", "")} disabled={confirmed}>+</button>
             </div>
         </div>
     );

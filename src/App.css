@@ -49,4 +49,17 @@
 
 .align-bottom {
     margin-top: auto;
+} 
+
+.invalid {
+    border-color: #d12828 !important;
+}
+
+.invalid:focus {
+    border-color: var(--border-focus) !important;
+}
+
+.disabled {
+    color: #777 !important;
+    cursor: not-allowed !important;
 }

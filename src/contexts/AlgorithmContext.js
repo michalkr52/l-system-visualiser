@@ -7,11 +7,18 @@ export const AlgorithmContext = createContext({
     axiom: "",
     output: [],
     displayedStep: 0,
+    invalidatedRules: [],
+    confirmed: false,
     setAxiom: (value) => {},
+    setOutput: (value) => {},
+    setConfirmed: (value) => {},
+    incrementDisplayedStep: () => {},
+    decrementDisplayedStep: () => {},
     addRule: (predecessor, successor) => {},
     removeRule: (index) => {},
     updateRulePredecessor: (index, value) => {},
-    updateRuleSuccessor: (index, value) => {}
+    updateRuleSuccessor: (index, value) => {},
+    onConfirm: () => {}
 });
 
 export function AlgorithmProvider(props) {
@@ -19,6 +26,8 @@ export function AlgorithmProvider(props) {
     const [axiom, setAxiom] = useState("");
     const [output, setOutput] = useState([]);
     const [displayedStep, setDisplayedStep] = useState(0);
+    const [invalidatedRules, setInvalidatedRules] = useState([]);
+    const [confirmed, setConfirmed] = useState(false);
 
     const addRule = (predecessor, successor) => {
         rules.push({
@@ -57,20 +66,51 @@ export function AlgorithmProvider(props) {
         if (displayedStep > 0) setDisplayedStep(displayedStep - 1);
     };
 
+    const onConfirm = () => {
+        let correct = true;
+        let invalid = [];
+
+        for (let i = 0; i < rules.length; i++) {
+            if (rules[i].predecessor.length === 0 || rules[i].successor.length === 0) {
+                correct = false;
+                invalid.push(i);
+            }
+        }
+        if (axiom.length === 0) {
+            correct = false;
+            invalid.push(-1);
+        }
+
+        if (correct) {
+            setInvalidatedRules([]);
+            setOutput([]);
+            setDisplayedStep(0);
+            setConfirmed(true);
+        }
+        else {
+            setInvalidatedRules([...invalid]);
+            setConfirmed(false);
+        }
+    };
+
     return (
         <AlgorithmContext.Provider value={{
             rules: rules,
             axiom: axiom,
             output: output,
             displayedStep: displayedStep,
+            invalidatedRules: invalidatedRules,
+            confirmed: confirmed,
             setAxiom: setAxiom,
             setOutput: setOutput,
+            setConfirmed: setConfirmed,
             incrementDisplayedStep: incrementDisplayedStep,
             decrementDisplayedStep: decrementDisplayedStep,
             addRule: addRule,
             removeRule: removeRule,
             updateRulePredecessor: updateRulePredecessor,
-            updateRuleSuccessor: updateRuleSuccessor
+            updateRuleSuccessor: updateRuleSuccessor,
+            onConfirm: onConfirm
         }}>
             {props.children}
         </AlgorithmContext.Provider>

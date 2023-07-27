@@ -1,0 +1,16 @@
+.confirm-button {
+    background: rgba(0, 0, 0, 0);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    margin: 4px auto 8px auto;
+    padding: 10px 16px;
+    display: block;
+    outline: none;
+    font-size: 1.1rem;
+    width: calc(100% - 16px);
+}
+
+.confirm-button:hover {
+    cursor: pointer;
+    border: 1px solid var(--border-focus);
+}

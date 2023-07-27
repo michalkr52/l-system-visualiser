@@ -4,6 +4,7 @@ import RuleSettings from "./components/RuleSettings";
 import AxiomSettings from "./components/AxiomSettings";
 import OutputTextbox from "./components/OutputTextbox";
 import StepControls from "./components/StepControls";
+import ConfirmButton from "./components/ConfirmButton";
 import { useContext } from "react";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
@@ -18,7 +19,10 @@ function App() {
                 <div className={"settings-panel settings-panel-left"}>
                     <div id="main-settings">
                         <RuleSettings />
-                        <AxiomSettings />
+                        <div className="align-bottom" style={{width: "100%"}}>
+                            <AxiomSettings />
+                            <ConfirmButton />
+                        </div>
                     </div>
                 </div>
                 <div className="output-canvas-container">
@@ -26,7 +30,7 @@ function App() {
                     <OutputTextbox />
                 </div>
                 <div className={"settings-panel settings-panel-right"}>
-                    <button onClick={toggle}>Theme toggle (PLACEHOLDER)</button>
+                    {/*<button onClick={toggle}>Theme toggle (PLACEHOLDER)</button>*/}
                     <StepControls />
                 </div>
             </AlgorithmProvider>
