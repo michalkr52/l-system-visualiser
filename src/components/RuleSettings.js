@@ -6,7 +6,6 @@ import { useContext } from "react";
 function RuleSettings() {
     const { rules, confirmed, addRule } = useContext(AlgorithmContext);
     
-    // todo: add a scrollbar to the rules list
     return (
         <div id="rule-settings">
             <div className="settings-title">Rules</div>

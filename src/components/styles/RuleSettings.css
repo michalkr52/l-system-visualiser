@@ -1,3 +1,8 @@
+#rule-settings {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
 .add-rule {
     background: rgba(0, 0, 0, 0);
     border: none;
