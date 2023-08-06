@@ -7,7 +7,7 @@ export const AlgorithmContext = createContext({
     axiom: "",
     output: [],
     displayedStep: 0,
-    invalidatedRules: [],
+    invalidRules: [],
     confirmed: false,
     setAxiom: (value) => {},
     setOutput: (value) => {},
@@ -26,7 +26,7 @@ export function AlgorithmProvider(props) {
     const [axiom, setAxiom] = useState("");
     const [output, setOutput] = useState([]);
     const [displayedStep, setDisplayedStep] = useState(0);
-    const [invalidatedRules, setInvalidatedRules] = useState([]);
+    const [invalidRules, setinvalidRules] = useState([]);
     const [confirmed, setConfirmed] = useState(false);
 
     const addRule = (predecessor, successor) => {
@@ -80,15 +80,19 @@ export function AlgorithmProvider(props) {
             correct = false;
             invalid.push(-1);
         }
+        if (rules.length === 0) {
+            correct = false;
+            invalid.push(-2);
+        }
 
         if (correct) {
-            setInvalidatedRules([]);
+            setinvalidRules([]);
             setOutput([]);
             setDisplayedStep(0);
             setConfirmed(true);
         }
         else {
-            setInvalidatedRules([...invalid]);
+            setinvalidRules([...invalid]);
             setConfirmed(false);
         }
     };
@@ -99,7 +103,7 @@ export function AlgorithmProvider(props) {
             axiom: axiom,
             output: output,
             displayedStep: displayedStep,
-            invalidatedRules: invalidatedRules,
+            invalidRules: invalidRules,
             confirmed: confirmed,
             setAxiom: setAxiom,
             setOutput: setOutput,

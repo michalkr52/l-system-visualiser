@@ -10,7 +10,12 @@
     width: calc(100% - 16px);
 }
 
-.confirm-button:hover {
+.confirm-button:hover:enabled {
     cursor: pointer;
     border: 1px solid var(--border-focus);
+}
+
+.confirm-button:disabled {
+    cursor: not-allowed;
+    color: var(--text-disabled);
 }
