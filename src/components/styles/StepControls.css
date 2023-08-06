@@ -32,7 +32,11 @@
     font-size: 1.1rem;
 }
 
-.step-controls button.step-control:hover {
+.step-controls button.step-control:hover:enabled {
     cursor: pointer;
     color: #28d1b6;     /* placeholder */
+}
+
+.step-controls button.step-control:disabled {
+    cursor: not-allowed;
 }

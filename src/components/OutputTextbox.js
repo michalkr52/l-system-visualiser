@@ -3,12 +3,12 @@ import { useContext } from "react";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
 
 function OutputTextbox() {
-    const { output } = useContext(AlgorithmContext);
+    const { output, displayedStep } = useContext(AlgorithmContext);
 
     return (
         <div className="output-textbox">
             <div className="output-textbox-title">Text output</div>
-            <textarea readOnly value={output}></textarea>
+            <textarea readOnly value={output[displayedStep]}></textarea>
         </div>
     );
 }
