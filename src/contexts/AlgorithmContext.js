@@ -1,5 +1,7 @@
 import { createContext, useEffect } from 'react';
 import { useState } from 'react';
+import { generateOutput } from '../logic/output';
+import { validateRules, validateAxiom } from '../logic/validation';
 
 // default context values
 export const AlgorithmContext = createContext({
@@ -62,80 +64,20 @@ export function AlgorithmProvider(props) {
         setRules([...rules]);
     };
 
-    const generateOutput = (step) => {
-        let newOutput = [...output];
-        if (step <= 0) newOutput[0] = axiom;
-        else {
-            if (newOutput.length < step) generateOutput(step - 1);
-            else if (newOutput.length == step) newOutput.push("");
-            let currentOutput = newOutput[step - 1];
-            newOutput[step] = "";
-            for (let i = 0; i < currentOutput.length; i++) {
-                let found = false;
-                for (let j = 0; j < rules.length; j++) {
-                    if (currentOutput[i] === rules[j].predecessor) {
-                        newOutput[step] += rules[j].successor;
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) newOutput[step] += currentOutput[i];
-            }
-        }
-        setOutput([...newOutput]);
-    }
-
     const incrementDisplayedStep = () => {
         setDisplayedStep(displayedStep + 1);
-        generateOutput(displayedStep + 1);
     };
 
     const decrementDisplayedStep = () => {
         if (displayedStep > 0) setDisplayedStep(displayedStep - 1);
-        generateOutput(displayedStep - 1);
     };
 
     const onConfirm = () => {
-        let correct = true;
-        let invalidPre = [];
-        let invalidSuc = [];
+        let { rulesCorrect, invalidPre, invalidSuc } = validateRules(rules, axiom);
+        let axiomCorrect = validateAxiom(axiom);
 
-        for (let i = 0; i < rules.length; i++) {
-            // Empty predecessor
-            if (rules[i].predecessor.length === 0) {
-                correct = false;
-                invalidPre.push(i);
-            }
-            // Empty successor
-            if (rules[i].successor.length === 0) {
-                correct = false;
-                invalidSuc.push(i);
-            }
-            // Predecessor is not a single character
-            if (rules[i].predecessor.length > 1) {
-                correct = false;
-                invalidPre.push(i);
-            }
-            // Duplicate predecessor
-            for (let j = i; j < rules.length; j++) {
-                if (i !== j && rules[i].predecessor === rules[j].predecessor) {
-                    correct = false;
-                    invalidPre.push(i);
-                    invalidPre.push(j);
-                }
-            }
-        }
-        // Empty axiom
-        if (axiom.length === 0) {
-            correct = false;
-            setIsAxiomInvalid(true);
-        }
-        // Empty rules
-        if (rules.length === 0) {
-            correct = false;
-        }
-
-        if (correct) {
+        if (!axiomCorrect) setIsAxiomInvalid(true);
+        if (rulesCorrect && axiomCorrect) {
             setInvalidPredecessors([]);
             setInvalidSuccessors([]);
             setIsAxiomInvalid(false);
@@ -152,9 +94,17 @@ export function AlgorithmProvider(props) {
 
     // Set initial output after confirming and clearing the old output
     useEffect(() => {
-        console.log(output);
-        if (output.length === 0 && confirmed) generateOutput(0);
+        if (output.length === 0 && confirmed) {
+            setOutput(generateOutput(0, output, rules, axiom));
+        }
     }, [output]);
+
+    // Generate current output after changing the displayed step
+    useEffect(() => {
+        if (confirmed) {
+            setOutput(generateOutput(displayedStep, output, rules, axiom));
+        }
+    }, [displayedStep]);
 
     return (
         <AlgorithmContext.Provider value={{
