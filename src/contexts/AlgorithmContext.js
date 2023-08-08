@@ -76,11 +76,12 @@ export function AlgorithmProvider(props) {
         let { rulesCorrect, invalidPre, invalidSuc } = validateRules(rules, axiom);
         let axiomCorrect = validateAxiom(axiom);
 
-        if (!axiomCorrect) setIsAxiomInvalid(true);
+        if (axiomCorrect) setIsAxiomInvalid(false);
+        else setIsAxiomInvalid(true);
+
         if (rulesCorrect && axiomCorrect) {
             setInvalidPredecessors([]);
             setInvalidSuccessors([]);
-            setIsAxiomInvalid(false);
             setDisplayedStep(0);
             setConfirmed(true);
             setOutput([]);

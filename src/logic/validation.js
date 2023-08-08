@@ -1,28 +1,28 @@
 export function validateRules(rules) {
-    let correct = true;
+    let rulesCorrect = true;
     let invalidPre = [];
     let invalidSuc = [];
 
     for (let i = 0; i < rules.length; i++) {
         // Empty predecessor
         if (rules[i].predecessor.length === 0) {
-            correct = false;
+            rulesCorrect = false;
             invalidPre.push(i);
         }
         // Empty successor
         if (rules[i].successor.length === 0) {
-            correct = false;
+            rulesCorrect = false;
             invalidSuc.push(i);
         }
         // Predecessor is not a single character
         if (rules[i].predecessor.length > 1) {
-            correct = false;
+            rulesCorrect = false;
             invalidPre.push(i);
         }
         // Duplicate predecessor
         for (let j = i; j < rules.length; j++) {
             if (i !== j && rules[i].predecessor === rules[j].predecessor) {
-                correct = false;
+                rulesCorrect = false;
                 invalidPre.push(i);
                 invalidPre.push(j);
             }
@@ -30,19 +30,19 @@ export function validateRules(rules) {
     }
     // Empty rules
     if (rules.length === 0) {
-        correct = false;
+        rulesCorrect = false;
     }
 
-    return { correct, invalidPre, invalidSuc };
+    return { rulesCorrect, invalidPre, invalidSuc };
 }
 
 export function validateAxiom(axiom) {
-    let correct = true;
+    let axiomCorrect = true;
 
     // Empty axiom
     if (axiom.length === 0) {
-        correct = false;
+        axiomCorrect = false;
     }
 
-    return correct;
+    return axiomCorrect;
 }
