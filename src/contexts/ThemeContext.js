@@ -5,6 +5,7 @@ const themes = {
     "light": {
         "bg": "#ffffff",
         "bg-panel": "#f0f0f0",
+        "bg-canvas": "#181818",
         "border": "#d9d9d9",
         "border-focus": "#bfbfbf",
         "text-primary": "#000000",
@@ -13,6 +14,7 @@ const themes = {
     "dark": {
         "bg": "#181818",
         "bg-panel": "#1f1f1f",
+        "bg-canvas": "#181818",
         "border": "#2a2a2a",
         "border-focus": "#3d3d3d",
         "text-primary": "#fafafa",
@@ -26,7 +28,9 @@ const themes = {
 // default context values
 export const ThemeContext = createContext({
     dark: false,
-    toggle: () => {}
+    toggle: () => {},
+    getTheme: () => {},
+    getColour: (colourName) => {}
 });
 
 export function ThemeProvider(props) {
@@ -37,19 +41,15 @@ export function ThemeProvider(props) {
         window.localStorage.setItem("darkMode", !dark);
     };
 
-    useLayoutEffect(() => {
-        const lastDark = window.localStorage.getItem("darkMode");
-        if (!lastDark || lastDark === "true") {
-            setDark(true);
-            applyTheme(themes["dark"]);
-        }
-        else if (lastDark === "false") {
-            setDark(false);
-            applyTheme(themes["light"]);
-        }
-    }, [dark]);
+    const getTheme = () => {
+        return dark ? themes["dark"] : themes["light"];
+    }
 
-    const applyTheme = theme => {
+    const getColour = (colourName) => {
+        return getTheme()[colourName];
+    }
+
+    const applyCssVars = theme => {
         const root = document.getElementsByTagName("html")[0];
         let style = "";
         for (let key in theme) {
@@ -60,8 +60,22 @@ export function ThemeProvider(props) {
         root.style.cssText = style;
     }
 
+    useLayoutEffect(() => {
+        const lastDark = window.localStorage.getItem("darkMode");
+        if (!lastDark || lastDark === "true") {
+            setDark(true);
+            applyCssVars(themes["dark"]);
+            window.localStorage.setItem("darkMode", true);
+        }
+        else if (lastDark === "false") {
+            setDark(false);
+            applyCssVars(themes["light"]);
+            window.localStorage.setItem("darkMode", false);
+        }
+    }, [dark]);
+
     return (
-        <ThemeContext.Provider value={{ dark, toggle }}>
+        <ThemeContext.Provider value={{ dark, toggle, getTheme, getColour }}>
             {props.children}
         </ThemeContext.Provider>
     );
