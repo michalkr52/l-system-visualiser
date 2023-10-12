@@ -1,25 +1,26 @@
 import "./styles/ConfirmButton.css";
-import { useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
 
 function ConfirmButton() {
     const { rules, axiom, confirmed, setConfirmed, onConfirm } = useContext(AlgorithmContext);
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = useCallback((event) => {
+        console.log(confirmed);
         if (event.key === "Enter" && !confirmed) {
             onConfirm();
         }
         else if (event.key === "Escape" && confirmed) {
             setConfirmed(false);
         }
-    }
+    }, [confirmed, axiom, rules]);
 
     useEffect(() => {
-        document.addEventListener("keydown", e => handleKeyDown(e));
+        document.addEventListener("keydown", handleKeyDown);
         return () => {
-            document.removeEventListener("keydown", e => handleKeyDown(e));
+            document.removeEventListener("keydown", handleKeyDown);
         }
-    }, [confirmed, rules, axiom]);
+    }, [handleKeyDown]);
 
     if (confirmed) {
         return (

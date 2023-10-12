@@ -1,25 +1,25 @@
 import "./styles/StepControls.css";
-import { useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
 
 function StepControls() {
     const { confirmed, displayedStep, incrementDisplayedStep, decrementDisplayedStep } = useContext(AlgorithmContext);
 
-    const handleKeyPress = (event) => {
+    const handleKeyDown = useCallback((event) => {
         if (!confirmed) return;
         if (event.key === "ArrowLeft") {
             decrementDisplayedStep();
         } else if (event.key === "ArrowRight") {
             incrementDisplayedStep();
         }
-    }
+    }, [confirmed, displayedStep]);
 
     useEffect(() => {
-        document.addEventListener("keydown", handleKeyPress);
+        document.addEventListener("keydown", handleKeyDown);
         return () => {
-            document.removeEventListener("keydown", handleKeyPress);
+            document.removeEventListener("keydown", handleKeyDown);
         }
-    }, [confirmed, displayedStep]);
+    }, [handleKeyDown]);
     
     return (
         <div className="settings-content align-bottom">
