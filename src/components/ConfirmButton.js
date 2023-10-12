@@ -6,7 +6,6 @@ function ConfirmButton() {
     const { rules, axiom, confirmed, setConfirmed, onConfirm } = useContext(AlgorithmContext);
 
     const handleKeyDown = useCallback((event) => {
-        console.log(confirmed);
         if (event.key === "Enter" && !confirmed) {
             onConfirm();
         }
