@@ -8,7 +8,7 @@ function OutputCanvas(props) {
     const canvasRef = useRef(null);
     let lineWidth = 3;
     let lineLength = 20;
-    let deltaAngle = 25.7;
+    let deltaAngle = 22.5;
     let scaleMultiplier = 0.85;
 
     const clearCanvas = () => {
