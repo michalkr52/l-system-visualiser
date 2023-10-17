@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { generateOutput } from '../logic/output';
 import { validateRules, validateAxiom } from '../logic/validation';
 
-// default context values
 export const AlgorithmContext = createContext({
     rules: [],
     axiom: "",

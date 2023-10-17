@@ -12,7 +12,7 @@ const themes = {
         "text-disabled": "#8c8c8c"
     },
     "dark": {
-        "bg": "#181818",
+        "bg": "#141414",
         "bg-panel": "#1f1f1f",
         "bg-canvas": "#181818",
         "border": "#2a2a2a",
@@ -25,7 +25,6 @@ const themes = {
 
 // todo: extend this to allow for more themes
 
-// default context values
 export const ThemeContext = createContext({
     dark: false,
     toggle: () => {},

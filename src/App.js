@@ -5,34 +5,37 @@ import AxiomSettings from "./components/AxiomSettings";
 import OutputTextbox from "./components/OutputTextbox";
 import StepControls from "./components/StepControls";
 import ConfirmButton from "./components/ConfirmButton";
-import { useContext } from "react";
-import { ThemeContext } from "./contexts/ThemeContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
+import { DrawingSettingsProvider } from "./contexts/DrawingSettingsContext";
+import StyleSettings from "./components/StyleSettings";
+import RangeNumberInput from "./components/RangeNumberInput";
 
 
 function App() {
-    const { toggle } = useContext(ThemeContext);
-
     return (
         <div id="app">
             <AlgorithmProvider>
-                <div className={"settings-panel settings-panel-left"}>
-                    <div id="main-settings">
-                        <RuleSettings />
-                        <div className="align-bottom" style={{width: "100%"}}>
-                            <AxiomSettings />
-                            <ConfirmButton />
+                <DrawingSettingsProvider>
+                    <div className={"settings-panel settings-panel-left"}>
+                        <div id="main-settings">
+                            <RuleSettings />
+                            <div className="align-bottom" style={{width: "100%"}}>
+                                <AxiomSettings />
+                                <ConfirmButton />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="output-canvas-container">
-                    <OutputCanvas width="600" height="450" />
-                    <OutputTextbox />
-                </div>
-                <div className={"settings-panel settings-panel-right"}>
-                    {/*<button onClick={toggle}>Theme toggle (PLACEHOLDER)</button>*/}
-                    <StepControls />
-                </div>
+                    <div className="output-canvas-container">
+                        <OutputCanvas width="600" height="450" />
+                        <OutputTextbox />
+                    </div>
+                    <div className={"settings-panel settings-panel-right"}>
+                        <div id="drawing-settings">
+                            <StyleSettings />
+                        </div>
+                        <StepControls />
+                    </div>
+                    </DrawingSettingsProvider>
             </AlgorithmProvider>
         </div>
   );
