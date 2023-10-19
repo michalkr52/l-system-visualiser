@@ -8,6 +8,7 @@ import ConfirmButton from "./components/ConfirmButton";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 import { DrawingSettingsProvider } from "./contexts/DrawingSettingsContext";
 import StyleSettings from "./components/StyleSettings";
+import TokenSettings from "./components/TokenSettings";
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
                     <div className={"settings-panel settings-panel-right"}>
                         <div id="drawing-settings">
                             <StyleSettings />
+                            <hr />
+                            <TokenSettings />
                         </div>
                         <StepControls />
                     </div>

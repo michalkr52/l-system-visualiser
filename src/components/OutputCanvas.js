@@ -7,9 +7,10 @@ import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
 function OutputCanvas(props) {
     const { dark, getColour } = useContext(ThemeContext);
     const { output, displayedStep } = useContext(AlgorithmContext);
-    const { lineWidth, deltaAngle } = useContext(DrawingSettingsContext);
+    const { lineWidth, deltaAngle, tokens } = useContext(DrawingSettingsContext);
     const canvasRef = useRef(null);
     const lineLength = 30;
+    const startingAngle = -Math.PI / 2;
     let scaleMultiplier = 0.85;
 
     const clearCanvas = () => {
@@ -20,14 +21,14 @@ function OutputCanvas(props) {
     }
 
     const measureDrawingDimensions = () => {
-        let x = 0, y = 0, angle = 0;
+        let x = 0, y = 0, angle = startingAngle;
         let posStack = [];
         let minX = 0, maxX = 0, minY = 0, maxY = 0;
 
         for (let symbol of output[displayedStep]) {
             switch (symbol) {
-                case "G":
-                case "F":
+                case tokens.forwardDraw.char:
+                case tokens.forwardNoDraw.char:
                     x += lineLength * Math.cos(angle);
                     y += lineLength * Math.sin(angle);
                     minX = Math.min(minX, x);
@@ -35,16 +36,16 @@ function OutputCanvas(props) {
                     minY = Math.min(minY, y);
                     maxY = Math.max(maxY, y);
                     break;
-                case "+":
+                case tokens.turnRight.char:
                     angle += Math.PI * (deltaAngle / 180);
                     break;
-                case "-":
+                case tokens.turnLeft.char:
                     angle -= Math.PI * (deltaAngle / 180);
                     break;
-                case "[":
+                case tokens.pushPos.char:
                     posStack.push({ x: x, y: y, angle: angle });
                     break;
-                case "]":
+                case tokens.popPos.char:
                     let pos = posStack.pop();
                     x = pos.x;
                     y = pos.y;
@@ -60,7 +61,7 @@ function OutputCanvas(props) {
         const ctx = canvasRef.current.getContext("2d");
         if (ctx === null || output === null || output.length === 0) return;
 
-        let x = 0, y = 0, angle = 0;
+        let x = 0, y = 0, angle = startingAngle;
         let posStack = [];
         let { minX, maxX, minY, maxY } = measureDrawingDimensions();
         let scale = Math.min(props.width / (maxX - minX), props.height / (maxY - minY)) * scaleMultiplier;
@@ -73,7 +74,7 @@ function OutputCanvas(props) {
 
         for (let symbol of output[displayedStep]) {
             switch (symbol) {
-                case "F":
+                case tokens.forwardDraw.char:
                     ctx.beginPath();
                     ctx.moveTo(x, y);
                     x += lineLength * Math.cos(angle);
@@ -81,21 +82,21 @@ function OutputCanvas(props) {
                     ctx.lineTo(x, y);
                     ctx.stroke();
                     break;
-                case "G":
+                case tokens.forwardNoDraw.char:
                     ctx.moveTo(x, y);
                     x += lineLength * Math.cos(angle);
                     y += lineLength * Math.sin(angle);
                     break;
-                case "+":
+                case tokens.turnRight.char:
                     angle += Math.PI * (deltaAngle / 180);
                     break;
-                case "-":
+                case tokens.turnLeft.char:
                     angle -= Math.PI * (deltaAngle / 180);
                     break;
-                case "[":
+                case tokens.pushPos.char:
                     posStack.push({ x: x, y: y, angle: angle });
                     break;
-                case "]":
+                case tokens.popPos.char:
                     let pos = posStack.pop();
                     x = pos.x;
                     y = pos.y;
@@ -111,7 +112,7 @@ function OutputCanvas(props) {
 
     useEffect(() => {
         draw();
-    }, [output, dark, lineWidth, deltaAngle]);
+    }, [output, dark, lineWidth, deltaAngle, tokens]);
 
     return (
         // todo: variable size, responsive (this one fits a 1200px wide app)
