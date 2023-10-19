@@ -3,26 +3,7 @@ import { useState } from 'react';
 import { generateOutput } from '../logic/output';
 import { validateRules, validateAxiom } from '../logic/validation';
 
-export const AlgorithmContext = createContext({
-    rules: [],
-    axiom: "",
-    output: [],
-    displayedStep: 0,
-    invalidPredecessors: [],
-    invalidSuccessors: [],
-    isAxiomInvalid: false,
-    confirmed: false,
-    setAxiom: (value) => {},
-    setOutput: (value) => {},
-    setConfirmed: (value) => {},
-    incrementDisplayedStep: () => {},
-    decrementDisplayedStep: () => {},
-    addRule: (predecessor, successor) => {},
-    removeRule: (index) => {},
-    updateRulePredecessor: (index, value) => {},
-    updateRuleSuccessor: (index, value) => {},
-    onConfirm: () => {}
-});
+export const AlgorithmContext = createContext();
 
 export function AlgorithmProvider(props) {
     const [rules, setRules] = useState([]);

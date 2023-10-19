@@ -25,12 +25,7 @@ const themes = {
 
 // todo: extend this to allow for more themes
 
-export const ThemeContext = createContext({
-    dark: false,
-    toggle: () => {},
-    getTheme: () => {},
-    getColour: (colourName) => {}
-});
+export const ThemeContext = createContext();
 
 export function ThemeProvider(props) {
     const [dark, setDark] = useState(window.localStorage.getItem("darkMode"));

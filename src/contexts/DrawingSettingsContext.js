@@ -1,9 +1,7 @@
 import { createContext } from 'react';
 import { useState } from 'react';
 
-export const DrawingSettingsContext = createContext({
-    
-});
+export const DrawingSettingsContext = createContext();
 
 export function DrawingSettingsProvider(props) {
     const [lineWidth, setLineWidth] = useState(3);
