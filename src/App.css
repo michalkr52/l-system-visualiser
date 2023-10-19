@@ -47,6 +47,25 @@
     padding: 5px;
 }
 
+#drawing-settings hr {
+    width: 75%;
+    color: var(--border);
+    background: var(--border);
+    margin: 20px auto;
+    height: 1px;
+}
+
+input {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    outline: none;
+}
+
+input:focus {
+    border: 1px solid var(--border-focus);
+}
+
 .align-bottom {
     margin-top: auto;
 } 

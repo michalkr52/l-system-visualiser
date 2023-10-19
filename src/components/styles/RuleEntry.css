@@ -9,22 +9,13 @@
 }
 
 .rule-entry input {
-    background: rgba(0, 0, 0, 0);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
     padding: 4px;
     margin: 3px 6px;
     width: 40%;
-    outline: none;
 }
 
 .rule-entry input::placeholder {
     text-align: center;
-}
-
-.rule-entry input:focus {
-    outline: none;
-    border: 1px solid var(--border-focus);
 }
 
 .rule-entry .remove-rule {
