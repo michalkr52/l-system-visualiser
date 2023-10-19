@@ -8,7 +8,6 @@ import ConfirmButton from "./components/ConfirmButton";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 import { DrawingSettingsProvider } from "./contexts/DrawingSettingsContext";
 import StyleSettings from "./components/StyleSettings";
-import RangeNumberInput from "./components/RangeNumberInput";
 
 
 function App() {

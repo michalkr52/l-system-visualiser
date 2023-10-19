@@ -58,7 +58,7 @@ function OutputCanvas(props) {
 
     const draw = () => {
         const ctx = canvasRef.current.getContext("2d");
-        if (ctx === null || output === null || output.length == 0) return;
+        if (ctx === null || output === null || output.length === 0) return;
 
         let x = 0, y = 0, angle = 0;
         let posStack = [];
