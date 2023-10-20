@@ -23,12 +23,12 @@ function ConfirmButton() {
 
     if (confirmed) {
         return (
-            <button className="confirm-button confirm-true" onClick={e => setConfirmed(false)}>Edit rules</button>
+            <button className="button confirm-button confirm-true" onClick={e => setConfirmed(false)}>Edit rules</button>
         );
     }
     else {
         return (
-            <button className="confirm-button confirm-false" onClick={e => onConfirm()}
+            <button className="button confirm-button confirm-false" onClick={e => onConfirm()}
                 disabled={rules.length <= 0 || axiom.length <= 0}>Confirm</button>
         );
     }
