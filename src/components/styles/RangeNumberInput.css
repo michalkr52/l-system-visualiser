@@ -1,0 +1,90 @@
+.range-input {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.range-label {
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.range-input input[type="range"] {
+    appearance: none;
+    overflow: hidden;
+    height: 13px;
+    flex-grow: 1;
+    margin-right: 10px;
+    background: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.range-input input[type="number"] {
+    width: 50px;
+    height: 25px;
+    font-size: 1rem;
+    text-align: center;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.range-input input[type="number"]::-webkit-inner-spin-button,
+.range-input input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Thumb and track styles */
+/* Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .range-input input[type="range"]::-webkit-slider-runnable-track {
+    height: 13px;
+    border-radius: 7px;
+    background-color: var(--border-focus);
+  }
+  
+  .range-input input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 13px;
+    width: 13px;
+    background-color: var(--border-focus);
+    border-radius: 50%;
+    border: 1px solid var(--text-primary);
+    box-shadow: -407px 0 0 400px var(--text-primary);
+  }
+}
+
+/* FF */
+.range-input input[type="range"]::-moz-range-track {
+  height: 13px;
+  border-radius: 7px;
+  background-color: var(--border-focus);
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 13px;
+  width: 13px;
+  background-color: var(--border-focus);
+  border-radius: 50%;
+  border: 1px solid var(--text-primary);
+  box-shadow: -407px 0 0 400px var(--text-primary);
+  box-sizing: border-box;
+}
+
+.range-input input[type="range"]::-moz-range-progress {
+  background-color: var(--text-primary); 
+}
+
+/* IE/Edge */
+.range-input input[type="range"]::-ms-fill-lower {
+background-color: #43e5f7; 
+}
+
+.range-input input[type="range"]::-ms-fill-upper {  
+background-color: #9a905d;
+}

@@ -48,22 +48,32 @@
 }
 
 #drawing-settings hr {
-    width: 75%;
+    width: 70%;
     color: var(--border);
     background: var(--border);
     margin: 20px auto;
     height: 1px;
 }
 
-input {
+input[type="number"],
+input[type="text"] {
     background: var(--bg-input);
     border: 1px solid var(--border);
     color: var(--text-primary);
     outline: none;
 }
 
-input:focus {
+.input-label {
+    user-select: none;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
     border: 1px solid var(--border-focus);
+}
+
+.output-canvas-container {
+    background-color: var(--bg-panel);
 }
 
 .align-bottom {

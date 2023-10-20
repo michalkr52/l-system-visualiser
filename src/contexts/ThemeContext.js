@@ -1,6 +1,5 @@
 import { createContext, useLayoutEffect, useState } from "react";
 
-
 const themes = {
     "light": {
         "bg": "#ffffff",
@@ -23,9 +22,6 @@ const themes = {
         "text-disabled": "#8c8c8c"
     }
 }
-
-
-// todo: extend this to allow for more themes
 
 export const ThemeContext = createContext();
 

@@ -1,0 +1,15 @@
+.token-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.token-input input {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    text-align: center;
+}
