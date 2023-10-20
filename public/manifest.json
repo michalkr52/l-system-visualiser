@@ -1,25 +1,30 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "L-system Visualiser",
+  "name": "L-system Visualiser",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "icon/icon72-white.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icon/icon128-white.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icon/icon256-white.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icon/icon72-white.ico",
+      "sizes": "72x72",
       "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#ffffff",
+  "background_color": "#141414"
 }
