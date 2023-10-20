@@ -2,6 +2,8 @@
 
 A web application for generating and visualising L-systems, made using React.
 
+Try it out on [GitHub Pages](https://michalkr52.github.io/l-system-visualiser/)
+
 ## Table of contents
 
 - [About L-systems](#about-l-systems)
