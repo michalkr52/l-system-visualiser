@@ -4,7 +4,7 @@ import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
 import TokenInput from "./TokenInput";
 
 function TokenSettings() {
-    const { tokens, setTokens } = useContext(DrawingSettingsContext);
+    const { tokens, setTokens, resetTokens } = useContext(DrawingSettingsContext);
 
     return (
         <div id="token-settings">
@@ -18,6 +18,7 @@ function TokenSettings() {
                     );
                 })
             }
+            <button className="revert-button" onClick={() => resetTokens()}>Revert to default</button>
         </div>
     );
 }

@@ -1,3 +1,7 @@
 #token-settings {
     padding: 0 20px;
 }
+
+#token-settings .revert-button {
+    margin: 15px auto 0 auto;
+}

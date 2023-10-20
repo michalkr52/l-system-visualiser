@@ -76,6 +76,16 @@ input[type="text"]:focus {
     background-color: var(--bg-panel);
 }
 
+.revert-button {
+    display: block;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    outline: none;
+    font-size: 0.8rem;
+}
+
 .align-bottom {
     margin-top: auto;
 } 

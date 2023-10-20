@@ -16,7 +16,7 @@ const themes = {
         "bg-panel": "#1f1f1f",
         "bg-canvas": "#181818",
         "bg-input": "#1c1c1c",
-        "border": "#2a2a2a",
+        "border": "#2c2c2c",
         "border-focus": "#3d3d3d",
         "text-primary": "#fafafa",
         "text-disabled": "#8c8c8c"
