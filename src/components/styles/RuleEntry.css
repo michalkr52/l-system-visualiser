@@ -18,6 +18,10 @@
     text-align: center;
 }
 
+.rule-entry:not(input) {
+    user-select: none;
+}
+
 .rule-entry .remove-rule {
     background: rgba(0, 0, 0, 0);
     border: none;

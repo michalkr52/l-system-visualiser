@@ -14,7 +14,8 @@ export function DrawingSettingsProvider(props) {
     };
 
     const [lineWidth, setLineWidth] = useState(3);
-    const [deltaAngle, setDeltaAngle] = useState(90);
+    const [deltaAngle, setDeltaAngle] = useState(90);   // [deg]
+    const [startingAngle, setStartingAngle] = useState(-90);   // [deg]
     const [tokens, setTokens] = useState(initialTokenState);
 
     return (
@@ -22,9 +23,11 @@ export function DrawingSettingsProvider(props) {
             lineWidth: lineWidth,
             deltaAngle: deltaAngle,
             tokens: tokens,
+            startingAngle: startingAngle,
             setLineWidth: setLineWidth,
             setDeltaAngle: setDeltaAngle,
             setTokens: setTokens,
+            setStartingAngle: setStartingAngle,
             resetTokens: () => setTokens(initialTokenState)
         }}>
             {props.children}

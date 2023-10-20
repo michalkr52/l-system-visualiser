@@ -63,6 +63,12 @@ input[type="text"] {
     outline: none;
 }
 
+input[type="number"]:disabled,
+input[type="text"]:disabled {
+    background: var(--bg-panel);
+    color: var(--text-disabled);
+}
+
 .input-label {
     user-select: none;
 }

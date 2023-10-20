@@ -7,10 +7,9 @@ import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
 function OutputCanvas(props) {
     const { dark, getColour } = useContext(ThemeContext);
     const { output, displayedStep } = useContext(AlgorithmContext);
-    const { lineWidth, deltaAngle, tokens } = useContext(DrawingSettingsContext);
+    const { lineWidth, deltaAngle, startingAngle, tokens } = useContext(DrawingSettingsContext);
     const canvasRef = useRef(null);
     const lineLength = 30;
-    const startingAngle = -Math.PI / 2;
     let scaleMultiplier = 0.85;
 
     const clearCanvas = () => {
@@ -21,7 +20,7 @@ function OutputCanvas(props) {
     }
 
     const measureDrawingDimensions = () => {
-        let x = 0, y = 0, angle = startingAngle;
+        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI;
         let posStack = [];
         let minX = 0, maxX = 0, minY = 0, maxY = 0;
 
@@ -61,7 +60,7 @@ function OutputCanvas(props) {
         const ctx = canvasRef.current.getContext("2d");
         if (ctx === null || output === null || output.length === 0) return;
 
-        let x = 0, y = 0, angle = startingAngle;
+        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI;
         let posStack = [];
         let { minX, maxX, minY, maxY } = measureDrawingDimensions();
         let scale = Math.min(props.width / (maxX - minX), props.height / (maxY - minY)) * scaleMultiplier;
@@ -71,6 +70,7 @@ function OutputCanvas(props) {
         ctx.translate(-minX - (maxX - minX) / 2, -minY - (maxY - minY) / 2);        // center drawing
         ctx.strokeStyle = getColour("text-primary");
         ctx.lineWidth = lineWidth;
+        console.log(angle);
 
         for (let symbol of output[displayedStep]) {
             switch (symbol) {
@@ -112,7 +112,7 @@ function OutputCanvas(props) {
 
     useEffect(() => {
         draw();
-    }, [output, dark, lineWidth, deltaAngle, tokens]);
+    }, [output, dark, lineWidth, deltaAngle, startingAngle, tokens]);
 
     return (
         // todo: variable size, responsive (this one fits a 1200px wide app)

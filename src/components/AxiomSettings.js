@@ -9,7 +9,7 @@ function AxiomSettings() {
         <div id="axiom-settings" className="settings-content">
         <div className="axiom-label">Axiom:</div>
             <input type="text" placeholder="axiom"
-                value={axiom} onChange={e => setAxiom(e.target.value)} disabled={confirmed}
+                value={axiom} onChange={e => setAxiom(e.target.value.trim())} disabled={confirmed}
                 className={"axiom-input" + (isAxiomInvalid ? " invalid" : "")} />
         </div>
     );

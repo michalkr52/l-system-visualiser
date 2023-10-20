@@ -30,7 +30,7 @@ export function AlgorithmProvider(props) {
 
     const updateRulePredecessor = (index, value) => {
         rules[index] = {
-            predecessor: value,
+            predecessor: value.trim(),
             successor: rules[index].successor
         };
         setRules([...rules]);
@@ -39,7 +39,7 @@ export function AlgorithmProvider(props) {
     const updateRuleSuccessor = (index, value) => {
         rules[index] = {
             predecessor: rules[index].predecessor,
-            successor: value
+            successor: value.trim()
         };
         setRules([...rules]);
     };

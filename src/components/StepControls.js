@@ -6,7 +6,7 @@ function StepControls() {
     const { confirmed, displayedStep, incrementDisplayedStep, decrementDisplayedStep } = useContext(AlgorithmContext);
 
     const handleKeyDown = useCallback((event) => {
-        if (!confirmed) return;
+        if (!confirmed || event.target.localName === "input") return;
         if (event.key === "ArrowLeft") {
             decrementDisplayedStep();
         } else if (event.key === "ArrowRight") {
