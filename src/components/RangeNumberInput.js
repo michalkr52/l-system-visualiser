@@ -5,15 +5,21 @@ function RangeNumberInput(props) {
     const defaultMin = 0;
     const defaultMax = 100;
 
+    const setValue = (value) => {
+        if (value < props.min) props.action(props.min);
+        else if (value > props.max) props.action(props.max);
+        else props.action(value);
+    };
+
     return (
         <div className={"range-input"}>
             <div className="range-label input-label">{props.label}</div>
-            <input type="range" value={props.value} onChange={e => props.action(e.target.value)}
+            <input type="range" value={props.value} step={props.step || defaultStep}
                 min={props.min || defaultMin} max={props.max || defaultMax} 
-                step={props.step || defaultStep} />
-            <input type="number" value={props.value} onChange={e => props.action(e.target.value)}
+                onChange={e => setValue(e.target.value)} />
+            <input type="number" value={props.value} step={props.step || defaultStep}
                 min={props.min || defaultMin} max={props.max || defaultMax} 
-                step={props.step || defaultStep} />
+                onChange={e => setValue(e.target.value)} />
         </div>
     );
 }
