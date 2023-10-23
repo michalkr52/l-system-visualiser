@@ -5,10 +5,11 @@ import AxiomSettings from "./components/AxiomSettings";
 import OutputTextbox from "./components/OutputTextbox";
 import StepControls from "./components/StepControls";
 import ConfirmButton from "./components/ConfirmButton";
-import { AlgorithmProvider } from "./contexts/AlgorithmContext";
-import { DrawingSettingsProvider } from "./contexts/DrawingSettingsContext";
 import StyleSettings from "./components/StyleSettings";
 import TokenSettings from "./components/TokenSettings";
+import RecipeLoader from "./components/RecipeLoader";
+import { AlgorithmProvider } from "./contexts/AlgorithmContext";
+import { DrawingSettingsProvider } from "./contexts/DrawingSettingsContext";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                         <div id="main-settings">
                             <RuleSettings />
                             <div className="align-bottom" style={{width: "100%"}}>
+                                <RecipeLoader />
                                 <AxiomSettings />
                                 <ConfirmButton />
                             </div>

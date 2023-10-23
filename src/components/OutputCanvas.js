@@ -70,7 +70,6 @@ function OutputCanvas(props) {
         ctx.translate(-minX - (maxX - minX) / 2, -minY - (maxY - minY) / 2);        // center drawing
         ctx.strokeStyle = getColour("text-primary");
         ctx.lineWidth = lineWidth;
-        console.log(angle);
 
         for (let symbol of output[displayedStep]) {
             switch (symbol) {

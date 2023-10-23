@@ -6,10 +6,12 @@ import { validateRules, validateAxiom } from '../logic/validation';
 export const AlgorithmContext = createContext();
 
 export function AlgorithmProvider(props) {
+    const initialStep = 1;
+
     const [rules, setRules] = useState([]);
     const [axiom, setAxiom] = useState("");
     const [output, setOutput] = useState([]);
-    const [displayedStep, setDisplayedStep] = useState(0);
+    const [displayedStep, setDisplayedStep] = useState(initialStep);
     const [invalidPredecessors, setInvalidPredecessors] = useState([]);
     const [invalidSuccessors, setInvalidSuccessors] = useState([]);
     const [isAxiomInvalid, setIsAxiomInvalid] = useState(false);
@@ -62,7 +64,7 @@ export function AlgorithmProvider(props) {
         if (rulesCorrect && axiomCorrect) {
             setInvalidPredecessors([]);
             setInvalidSuccessors([]);
-            setDisplayedStep(0);
+            setDisplayedStep(initialStep);
             setConfirmed(true);
             setOutput([]);
         }
@@ -76,7 +78,7 @@ export function AlgorithmProvider(props) {
     // Set initial output after confirming and clearing the old output
     useEffect(() => {
         if (output.length === 0 && confirmed) {
-            setOutput(generateOutput(0, output, rules, axiom));
+            setOutput(generateOutput(initialStep, output, rules, axiom));
         }
     }, [output]);
 
@@ -97,6 +99,7 @@ export function AlgorithmProvider(props) {
             invalidSuccessors: invalidSuccessors,
             isAxiomInvalid: isAxiomInvalid,
             confirmed: confirmed,
+            setRules: setRules,
             setAxiom: setAxiom,
             setOutput: setOutput,
             setConfirmed: setConfirmed,

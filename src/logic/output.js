@@ -1,7 +1,7 @@
 export function generateOutput(step, outputArray, rules, axiom) {
     let newOutput = [...outputArray];
-    if (step <= 0) newOutput[0] = axiom;
-    else {
+    newOutput[0] = axiom;
+    if (step > 0) {
         if (newOutput.length < step) generateOutput(step - 1);
         else if (newOutput.length == step) newOutput.push("");
         let currentOutput = newOutput[step - 1];
