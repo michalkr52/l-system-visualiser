@@ -1,0 +1,63 @@
+{
+    "recipes": [
+        {
+            "group": "General",
+            "name": "Koch Curve",
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F+F-F-FF+F+F-F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "Bush",
+            "name": "Bush 1",
+            "axiom": "X",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "FF"
+                },
+                {
+                    "predecessor": "X",
+                    "successor": "F-[[X]+X]+F[+FX]-X"
+                }
+            ],
+            "angle": 22.5,
+            "lengthFactor": null
+        },
+        {
+            "group": "Leaf",
+            "name": "Leaf 1",
+            "axiom": "a",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": ">F<"
+                },
+                {
+                    "predecessor": "a",
+                    "successor": "F[+x]Fb"
+                },
+                {
+                    "predecessor": "b",
+                    "successor": "F[-y]Fa"
+                },
+                {
+                    "predecessor": "x",
+                    "successor": "a"
+                },
+                {
+                    "predecessor": "y",
+                    "successor": "b"
+                }
+            ],
+            "angle": 45,
+            "lengthFactor": 1.36
+        }
+    ]
+}
