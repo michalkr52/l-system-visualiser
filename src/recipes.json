@@ -3,6 +3,7 @@
         {
             "group": "General",
             "name": "Koch Curve",
+            "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
                 {
@@ -14,8 +15,405 @@
             "lengthFactor": null
         },
         {
-            "group": "Bush",
+            "group": "General",
+            "name": "Dragon Curve",
+            "notes": null,
+            "axiom": "FX",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "X+YF+"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "-FX-Y"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Lévy Curve",
+            "notes": null,
+            "axiom": "F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "-F++F-"
+                }
+            ],
+            "angle": 45,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Classic Sierpinski Curve",
+            "notes": "Rules by Chris Wallace",
+            "axiom": "F--XF--F--XF",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "XF+F+XF--F--XF+F+X"
+                }
+            ],
+            "angle": 45,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Triangle",
+            "notes": null,
+            "axiom": "F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F-F+F"
+                }
+            ],
+            "angle": 120,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Cross 1",
+            "notes": null,
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F+FF++F+F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Cross 2",
+            "notes": null,
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F+F-F+F+F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Pentaplexity",
+            "notes": null,
+            "axiom": "F++F++F++F++F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F++F++F+++++F-F++F"
+                }
+            ],
+            "angle": 36,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Tiles",
+            "notes": null,
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "FF+F-F+F+FF"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Rings",
+            "notes": null,
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "FF+F+F+F+F+F-F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Square Sierpinski",
+            "notes": null,
+            "axiom": "F+XF+F+XF",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "XF-F+F-XF+F+XF-F+F-X"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Sierpinski Arrowhead",
+            "notes": null,
+            "axiom": "YF",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "YF+XF+Y"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "XF-YF-X"
+                }
+            ],
+            "angle": 60,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Crystal",
+            "notes": null,
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "FF+F++F+F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Von Koch Snowflake",
+            "notes": null,
+            "axiom": "F++F++F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F-F++F-F"
+                }
+            ],
+            "angle": 60,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Quadratic Snowflake 1",
+            "notes": null,
+            "axiom": "F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F-F+F+F-F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Quadratic Snowflake 2",
+            "notes": "Variation by Hasan Hosam",
+            "axiom": "FF+FF+FF+FF",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F+F-F-F+F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Quadratic Koch Island 1",
+            "notes": null,
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F+F-F-FFF+F+F-F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Quadratic Koch Island 2",
+            "notes": null,
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F-FF+FF+F+F-F-FF+F+F-F-FF-FF+F"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "General",
+            "name": "Quadratic Koch Island 3",
+            "notes": "Variation by Hasan Hosam",
+            "axiom": "X+X+X+X+X+X+X+X",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "X+YF++YF-FX--FXFX-YF+X"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "-FX+YFYF++YF+FX--FX-YF"
+                }
+            ],
+            "angle": 45,
+            "lengthFactor": null
+        },
+        {
+            "group": "Grids",
+            "name": "Quadratic Gosper",
+            "notes": null,
+            "axiom": "-YF",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "XFX-YF-YF+FX+FX-YF-YFFX+YF+FXFXYF-FX+YF+FXFX+YF-FXYF-YF-FX+FX+YFYF-"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "+FXFX-YF-YF+FX+FXYF+FX-YFYF-FX-YF+FXYFYF-FX-YFFX+FX+YF-YF-FX+FX+YFY"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "Grids",
+            "name": "Hexagonal Gosper",
+            "notes": "Attributed to Mandelbrot, 1982",
+            "axiom": "XF",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "X+YF++YF-FX--FXFX-YF+"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "-FX+YFYF++YF+FX--FX-Y"
+                }
+            ],
+            "angle": 60,
+            "lengthFactor": null
+        },
+        {
+            "group": "Grids",
+            "name": "Peano Curve",
+            "notes": null,
+            "axiom": "X",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "XFYFX+F+YFXFY-F-XFYFX"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "YFXFY-F-XFYFX+F+YFXFY"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "Grids",
+            "name": "Board",
+            "notes": null,
+            "axiom": "F+F+F+F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "FF+F+F+F+FF"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "Grids",
+            "name": "Hilbert",
+            "notes": "Attributed to the German mathematician David Hilbert, circa 1891",
+            "axiom": "X",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "-YF+XFX+FY-"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "+XF-YFY-FX+"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "Grids",
+            "name": "Krishna Anklets",
+            "notes": null,
+            "axiom": "-X--X",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "XFX--XFX"
+                }
+            ],
+            "angle": 45,
+            "lengthFactor": null
+        },
+        {
+            "group": "Grids",
+            "name": "Mango Leaf",
+            "notes": null,
+            "axiom": "Y---Y",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "{F-F}{F-F}--[--X]{F-F}{F-F}--{F-F}{F-F}--"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "f-F+X+F-fY"
+                }
+            ],
+            "angle": 60,
+            "lengthFactor": null
+        },
+        {
+            "group": "Grids",
+            "name": "Snake Kolam",
+            "notes": null,
+            "axiom": "F+XF+F+XF",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "X{F-F-F}+XF+F+X{F-F-F}+X-"
+                }
+            ],
+            "angle": 90,
+            "lengthFactor": null
+        },
+        {
+            "group": "Plantlike",
             "name": "Bush 1",
+            "notes": null,
             "axiom": "X",
             "rules": [
                 {
@@ -31,8 +429,317 @@
             "lengthFactor": null
         },
         {
-            "group": "Leaf",
+            "group": "Plantlike",
+            "name": "Bush 2",
+            "notes": null,
+            "axiom": "Y",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": "X[-FFF][+FFF]FX"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "YFX[+Y][-Y]"
+                }
+            ],
+            "angle": 25.7,
+            "lengthFactor": null
+        },
+        {
+            "group": "Plantlike",
+            "name": "Bush 3",
+            "notes": null,
+            "axiom": "F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "FF+[+F-F-F]-[-F+F+F]"
+                }
+            ],
+            "angle": 22.5,
+            "lengthFactor": null
+        },
+        {
+            "group": "Plantlike",
+            "name": "Bush 4",
+            "notes": null,
+            "axiom": "F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "F[+FF][-FF]F[-F][+F]F"
+                }
+            ],
+            "angle": 35,
+            "lengthFactor": null
+        },
+        {
+            "group": "Plantlike",
+            "name": "Bush 5",
+            "notes": "Attributed to Deitmar Saupe",
+            "axiom": "VZFFF",
+            "rules": [
+                {
+                    "predecessor": "V",
+                    "successor": "[+++W][---W]YV"
+                },
+                {
+                    "predecessor": "W",
+                    "successor": "+X[-W]Z"
+                },
+                {
+                    "predecessor": "X",
+                    "successor": "-W[+X]Z"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "YZ"
+                },
+                {
+                    "predecessor": "Z",
+                    "successor": "[-FFF][+FFF]F"
+                }
+            ],
+            "angle": 20,
+            "lengthFactor": null
+        },
+        {
+            "group": "Plantlike",
+            "name": "Bush 6",
+            "notes": null,
+            "axiom": "FX",
+            "rules": [
+                {
+                    "predecessor": "X",
+                    "successor": ">[-FX]+FX"
+                }
+            ],
+            "angle": 20,
+            "lengthFactor": 1.65
+        },
+        {
+            "group": "Plantlike",
+            "name": "Stick 1",
+            "notes": null,
+            "axiom": "X",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "FF"
+                },
+                {
+                    "predecessor": "X",
+                    "successor": "F[+X]F[-X]+X"
+                }
+            ],
+            "angle": 20,
+            "lengthFactor": null
+        },
+        {
+            "group": "Plantlike",
+            "name": "Algae 1",
+            "notes": null,
+            "axiom": "aF",
+            "rules": [
+                {
+                    "predecessor": "a",
+                    "successor": "FFFFFv[+++h][---q]fb"
+                },
+                {
+                    "predecessor": "b",
+                    "successor": "FFFFFv[+++h][---q]fc"
+                },
+                {
+                    "predecessor": "c",
+                    "successor": "FFFFFv[+++fa]fd"
+                },
+                {
+                    "predecessor": "d",
+                    "successor": "FFFFFv[+++h][---q]fe"
+                },
+                {
+                    "predecessor": "e",
+                    "successor": "FFFFFv[+++h][---q]fg"
+                },
+                {
+                    "predecessor": "g",
+                    "successor": "FFFFFv[---fa]fa"
+                },
+                {
+                    "predecessor": "h",
+                    "successor": "ifFF"
+                },
+                {
+                    "predecessor": "i",
+                    "successor": "fFFF[--m]j"
+                },
+                {
+                    "predecessor": "j",
+                    "successor": "fFFF[--n]k"
+                },
+                {
+                    "predecessor": "k",
+                    "successor": "fFFF[--o]l"
+                },
+                {
+                    "predecessor": "l",
+                    "successor": "fFFF[--p]"
+                },
+                {
+                    "predecessor": "m",
+                    "successor": "fFn"
+                },
+                {
+                    "predecessor": "n",
+                    "successor": "fFo"
+                },
+                {
+                    "predecessor": "o",
+                    "successor": "fFp"
+                },
+                {
+                    "predecessor": "p",
+                    "successor": "fF"
+                },
+                {
+                    "predecessor": "q",
+                    "successor": "rfF"
+                },
+                {
+                    "predecessor": "r",
+                    "successor": "fFFF[++m]s"
+                },
+                {
+                    "predecessor": "s",
+                    "successor": "fFFF[++n]t"
+                },
+                {
+                    "predecessor": "t",
+                    "successor": "fFFF[++o]u"
+                },
+                {
+                    "predecessor": "u",
+                    "successor": "fFFF[++p]"
+                },
+                {
+                    "predecessor": "v",
+                    "successor": "Fv"
+                }
+            ],
+            "angle": 12,
+            "lengthFactor": null
+        },
+        {
+            "group": "Plantlike",
+            "name": "Algae 2",
+            "notes": null,
+            "axiom": "aF",
+            "rules": [
+                {
+                    "predecessor": "a",
+                    "successor": "FFFFFy[++++n][----t]fb"
+                },
+                {
+                    "predecessor": "b",
+                    "successor": "+FFFFFy[++++n][----t]fc"
+                },
+                {
+                    "predecessor": "c",
+                    "successor": "FFFFFy[++++n][----t]fd"
+                },
+                {
+                    "predecessor": "d",
+                    "successor": "-FFFFFy[++++n][----t]fe"
+                },
+                {
+                    "predecessor": "e",
+                    "successor": "FFFFFy[++++n][----t]fg"
+                },
+                {
+                    "predecessor": "g",
+                    "successor": "FFFFFy[+++fa]fh"
+                },
+                {
+                    "predecessor": "h",
+                    "successor": "FFFFFy[++++n][----t]fi"
+                },
+                {
+                    "predecessor": "i",
+                    "successor": "+FFFFFy[++++n][----t]fj"
+                },
+                {
+                    "predecessor": "j",
+                    "successor": "FFFFFy[++++n][----t]fk"
+                },
+                {
+                    "predecessor": "k",
+                    "successor": "-FFFFFy[++++n][----t]fl"
+                },
+                {
+                    "predecessor": "l",
+                    "successor": "FFFFFy[++++n][----t]fm"
+                },
+                {
+                    "predecessor": "m",
+                    "successor": "FFFFFy[---fa]fa"
+                },
+                {
+                    "predecessor": "n",
+                    "successor": "ofFFF"
+                },
+                {
+                    "predecessor": "o",
+                    "successor": "fFFFp"
+                },
+                {
+                    "predecessor": "p",
+                    "successor": "fFFF[-s]q"
+                },
+                {
+                    "predecessor": "q",
+                    "successor": "fFFF[-s]r"
+                },
+                {
+                    "predecessor": "r",
+                    "successor": "fFFF[-s]"
+                },
+                {
+                    "predecessor": "s",
+                    "successor": "fFfF"
+                },
+                {
+                    "predecessor": "t",
+                    "successor": "ufFFF"
+                },
+                {
+                    "predecessor": "u",
+                    "successor": "fFFFv"
+                },
+                {
+                    "predecessor": "v",
+                    "successor": "fFFF[+s]w"
+                },
+                {
+                    "predecessor": "w",
+                    "successor": "fFFF[+s]x"
+                },
+                {
+                    "predecessor": "x",
+                    "successor": "fFFF[+s]"
+                },
+                {
+                    "predecessor": "y",
+                    "successor": "Fy"
+                }
+            ],
+            "angle": 12,
+            "lengthFactor": null
+        },
+        {
+            "group": "Plantlike",
             "name": "Leaf 1",
+            "notes": null,
             "axiom": "a",
             "rules": [
                 {
@@ -58,6 +765,28 @@
             ],
             "angle": 45,
             "lengthFactor": 1.36
+        },
+        {
+            "group": "Plantlike",
+            "name": "Weed 1",
+            "notes": null,
+            "axiom": "F",
+            "rules": [
+                {
+                    "predecessor": "F",
+                    "successor": "FF-[XY]+[XY]"
+                },
+                {
+                    "predecessor": "X",
+                    "successor": "+FY"
+                },
+                {
+                    "predecessor": "Y",
+                    "successor": "-FX"
+                }
+            ],
+            "angle": 22.5,
+            "lengthFactor": null
         }
     ]
 }
