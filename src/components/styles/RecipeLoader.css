@@ -38,3 +38,16 @@
     max-height: calc(100% - 36px); 
     margin-top: 12px;
 }
+
+#recipe-modal .recipe-author {
+    position: absolute;
+    text-align: center;
+    bottom: -35px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+
+#recipe-modal .recipe-author a {
+    color: var(--text-primary);
+}
