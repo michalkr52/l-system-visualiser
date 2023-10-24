@@ -1,0 +1,40 @@
+.recipe-modal-overlay {
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#recipe-loader > .button {
+    margin: 0 auto 10px auto;
+    padding: 8px 12px;
+}
+
+#recipe-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 600px;
+    padding: 8px;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+#recipe-modal .close-button {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    font-size: 1.2rem;
+}
+
+#recipe-modal .recipe-list-title {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#recipe-list {
+    overflow-y: auto;
+    max-height: calc(100% - 36px); 
+    margin-top: 12px;
+}

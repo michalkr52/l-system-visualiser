@@ -1,12 +1,13 @@
 import "./styles/RecipeLoader.css";
-import data from "../recipes.json";
+import data from "../assets/recipes.json";
 import { useContext, useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
+import RecipeCard from "./RecipeCard";
 
 function RecipeLoader() {
-    const { setDeltaAngle } = useContext(DrawingSettingsContext);
+    const { setDeltaAngle, resetTokens } = useContext(DrawingSettingsContext);
     const { rules, setAxiom, setRules, onConfirm } = useContext(AlgorithmContext);
 
     const recipes = data.recipes;
@@ -19,6 +20,7 @@ function RecipeLoader() {
 
     const loadRecipe = (recipe) => {
         setIsLoading(true);
+        resetTokens();
         setDeltaAngle(recipe.angle);
         setAxiom(recipe.axiom);
         setRules(recipe.rules);
@@ -34,18 +36,18 @@ function RecipeLoader() {
 
     return (
         <div id="recipe-loader">
-            <button onClick={handleOpenModal}>Load from recipe</button>
-            <ReactModal id="recipe-modal" isOpen={isModalOpen} ariaHideApp={false}>
+            <button className="button" onClick={handleOpenModal}>Load from recipe</button>
+            <ReactModal id="recipe-modal" isOpen={isModalOpen} ariaHideApp={false}
+                overlayClassName={"recipe-modal-overlay"} className={"modal"}>
+                <div className="recipe-list-title">Recipes</div>
                 <div id="recipe-list">
                     {recipes.map((recipe, index) => {
                         return (
-                            <div key={index} className="recipe-entry" onClick={loadRecipe.bind(null, recipe)}>
-                                <div className="recipe-name">{recipe.name}</div>
-                            </div>
+                            <RecipeCard key={index} recipe={recipe} onLoad={() => loadRecipe(recipe)} />
                         );
                     })}
                 </div>
-                <button onClick={handleCloseModal} className="close-button">{"\u00d7"}</button>
+                <button onClick={handleCloseModal} className="button close-button">&#xd7;</button>
             </ReactModal>
         </div>
     );

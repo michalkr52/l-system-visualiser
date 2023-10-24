@@ -1,0 +1,86 @@
+.recipe-card {
+    position: relative;
+    max-width: 500px;
+    border: 1px solid var(--border);
+    margin-top: 6px;
+}
+
+.recipe-card:first-child {
+    margin-top: 0;
+}
+
+.recipe-card .recipe-main {
+    position: relative;
+    display: flex;
+    flex: row nowrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+    color: var(--text-primary);
+    height: 100px;
+}
+
+.recipe-card .recipe-card-left {
+    position: relative;
+}
+
+.recipe-card .recipe-name {
+    font-size: 1.3rem;
+    padding: 14px 10px;
+    margin-right: -80px;
+}
+
+.recipe-card .recipe-group {
+    position: absolute;
+    padding: 4px 10px;
+    bottom: 14px;
+}
+
+.recipe-card .recipe-load-button {
+    margin: 0 12px 8px auto;
+    align-self: flex-end;
+    padding: 8px 12px;
+}
+
+.recipe-card .recipe-image {
+    margin-right: 4px;
+}
+
+.recipe-card .recipe-expand {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    background-color: rgba(0,0,0,0);
+    border: none;
+}
+
+.recipe-card .recipe-expand:hover,
+.recipe-card .recipe-expand:active {
+    background-color: rgba(0,0,0,0);
+    border: none;
+}
+
+.recipe-card .recipe-extended hr {
+    width: 80%;
+    color: var(--border);
+    background-color: var(--border);
+    margin-bottom: 0;
+}
+
+.recipe-card .recipe-notes {
+    margin: 10px 0 -4px 10px;
+}
+
+.recipe-card .recipe-extended-settings {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    line-height: 1.75rem;
+}
+
+.recipe-card .recipe-extended-settings > div {
+    flex-basis: 50%;
+}
