@@ -12,7 +12,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -30,7 +31,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -44,7 +46,8 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -58,7 +61,8 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -72,7 +76,8 @@
                 }
             ],
             "angle": 120,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -86,7 +91,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+"
         },
         {
             "group": "General",
@@ -100,7 +106,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -114,7 +121,8 @@
                 }
             ],
             "angle": 36,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -128,7 +136,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -142,7 +151,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -156,7 +166,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -174,7 +185,8 @@
                 }
             ],
             "angle": 60,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -188,7 +200,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+"
         },
         {
             "group": "General",
@@ -202,7 +215,8 @@
                 }
             ],
             "angle": 60,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -216,7 +230,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -230,7 +245,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -244,7 +260,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -258,7 +275,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "General",
@@ -276,7 +294,8 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "Grids",
@@ -294,7 +313,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "Grids",
@@ -312,7 +332,8 @@
                 }
             ],
             "angle": 60,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "Grids",
@@ -330,7 +351,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "Grids",
@@ -344,7 +366,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+"
         },
         {
             "group": "Grids",
@@ -362,7 +385,8 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-"
         },
         {
             "group": "Grids",
@@ -376,7 +400,8 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F-"
         },
         {
             "group": "Plantlike",
@@ -394,7 +419,8 @@
                 }
             ],
             "angle": 22.5,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
@@ -412,7 +438,8 @@
                 }
             ],
             "angle": 25.7,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
@@ -426,7 +453,8 @@
                 }
             ],
             "angle": 22.5,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
@@ -440,7 +468,8 @@
                 }
             ],
             "angle": 35,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
@@ -470,7 +499,8 @@
                 }
             ],
             "angle": 20,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
@@ -484,7 +514,8 @@
                 }
             ],
             "angle": 20,
-            "lengthFactor": 1.65
+            "lengthFactor": 1.65,
+            "tokens": "F+-[]>"
         },
         {
             "group": "Plantlike",
@@ -502,7 +533,8 @@
                 }
             ],
             "angle": 20,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
@@ -596,7 +628,8 @@
                 }
             ],
             "angle": 12,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "Ff+-[]"
         },
         {
             "group": "Plantlike",
@@ -702,7 +735,8 @@
                 }
             ],
             "angle": 12,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "Ff+-[]"
         },
         {
             "group": "Plantlike",
@@ -732,7 +766,8 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": 1.36
+            "lengthFactor": 1.36,
+            "tokens": "F+-[]><"
         },
         {
             "group": "Plantlike",
@@ -754,7 +789,8 @@
                 }
             ],
             "angle": 22.5,
-            "lengthFactor": null
+            "lengthFactor": null,
+            "tokens": "F+-[]"
         }
     ]
 }

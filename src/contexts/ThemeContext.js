@@ -9,6 +9,7 @@ const themes = {
         "border": "#d9d9d9",
         "border-focus": "#bfbfbf",
         "text-primary": "#000000",
+        "text-secondary": "#555555",
         "text-disabled": "#8c8c8c"
     },
     "dark": {
@@ -19,6 +20,7 @@ const themes = {
         "border": "#2c2c2c",
         "border-focus": "#3d3d3d",
         "text-primary": "#fafafa",
+        "text-secondary": "#999999",
         "text-disabled": "#8c8c8c"
     }
 }

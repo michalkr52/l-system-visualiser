@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function RecipeCard(props) {
     const { recipe, onLoad } = props;
-    const { name, group, notes, axiom, rules, angle, lengthFactor } = recipe;
+    const { name, group, notes, axiom, rules, angle, tokens, lengthFactor } = recipe;
     const image = require("../assets/recipe-placeholder.png");
     const [ expanded, setExpanded ] = useState(false);
 
@@ -13,6 +13,7 @@ function RecipeCard(props) {
                 <div className="recipe-card-left">
                     <div className="recipe-name">{name}</div>
                     <div className="recipe-group">{group}</div>
+                    <div className="recipe-tokens">{tokens}</div>
                 </div>
                 <button className="button recipe-load-button" onClick={onLoad}>Load</button>
                 <img className="recipe-image" src={image} alt={name} />

@@ -6,7 +6,7 @@ export const DrawingSettingsContext = createContext();
 export function DrawingSettingsProvider(props) {
     const initialTokenState = {
         forwardDraw: {char: "F", label: "Forward (draw)"},
-        forwardNoDraw: {char: "G", label: "Forward (no draw)"},
+        forwardNoDraw: {char: "f", label: "Forward (no draw)"},
         turnLeft: {char: "-", label: "Rotate left"},
         turnRight: {char: "+", label: "Rotate right"},
         pushPos: {char: "[", label: "Push position"},

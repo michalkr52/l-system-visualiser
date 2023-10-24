@@ -30,9 +30,14 @@
 }
 
 .recipe-card .recipe-group {
-    position: absolute;
+    padding: 0px 10px 4px 10px;
+    color: var(--text-secondary);
+}
+
+.recipe-card .recipe-tokens {
+    font-family: monospace;
     padding: 4px 10px;
-    bottom: 14px;
+    color: var(--text-secondary);
 }
 
 .recipe-card .recipe-load-button {
