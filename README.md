@@ -23,6 +23,9 @@ The name of these systems comes from the name of a Hungarian theoretical biologi
 The rules of the L-system grammar are applied iteratively starting from the initial state. They are applied simultaneously, per iteration. The recursive nature of this process leads to self-similarity and thus allows for easy definition of many fractal-like forms.
 The individual symbols in a resultative string are interpreted as directives for graphical representation. In this app, a single character is an action to take while drawing the form on a `<canvas>` element.
 
+You can find a very detailed explanation with great examples on [Paul Bourke's website](http://paulbourke.net/fractals/lsys/). 
+Every recipe implemented in the app is taken from the examples on this website.
+
 ### Example of an L-system
 
 Symbol meaning (specific for this example):
@@ -47,15 +50,7 @@ Result:
 
 The visualiser allows for definition of an axiom and multiple rules. You can control how each character is processed for drawing, by choosing which action is triggered by which token. 
 
-Planned features:
-
-- a list of recipes - sets of rules and axioms you can import with one click,
-- canvas zooming (fullscreen?),
-- recipe sharing,
-- canvas image exporting,
-- ...and many more!    <sup><sup>hopefully</sup></sup>
-
-I'm keeping track of features I want to implement and things to change on [my Trello board](https://trello.com/b/v6IxAPKg/l-system-visualiser). It's being occasionally updated with new ideas or other stuff I want to keep in mind. I try to keep it tidy and free of any inconsistencies, but it's not my priority to have it perfectly organised.
+I'm keeping track of planned features and things worth keeping in mind on [my Trello board](https://trello.com/b/v6IxAPKg/l-system-visualiser). It's being occasionally updated regularly, when I come up with something I want to do later. I try to keep it tidy and free of any inconsistencies, but it's not my priority to have it perfectly organised.
 
 ## Usage
 
