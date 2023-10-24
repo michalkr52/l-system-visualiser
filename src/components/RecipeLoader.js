@@ -51,7 +51,7 @@ function RecipeLoader() {
                 <button onClick={handleCloseModal} className="button close-button">&#xd7;</button>
                 <div className="recipe-author">
                     Every recipe in this list was written by&nbsp;
-                    <a href="http://paulbourke.net/fractals/lsys/">Paul Bourke</a>.
+                    <a href="http://paulbourke.net/fractals/lsys/" target="_blank">Paul Bourke</a>.
                 </div>
             </ReactModal>
         </div>
