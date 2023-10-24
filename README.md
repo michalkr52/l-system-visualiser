@@ -55,6 +55,8 @@ Planned features:
 - canvas image exporting,
 - ...and many more!    <sup><sup>hopefully</sup></sup>
 
+I'm keeping track of features I want to implement and things to change on [my Trello board](https://trello.com/b/v6IxAPKg/l-system-visualiser). It's being occasionally updated with new ideas or other stuff I want to keep in mind. I try to keep it tidy and free of any inconsistencies, but it's not my priority to have it perfectly organised.
+
 ## Usage
 
 ### Instructions
@@ -63,7 +65,7 @@ Start by inputting the axiom and then enter the processing rules. The predecesso
 
 ### GitHub Pages deployment
 
-The app is deployed on GitHub Pages and can be used there. You can try it out [here](https://michalkr52.github.io/l-system-visualiser/)! Keep in mind, that I'm deploying the website manually, and it could be a couple of commits behind. That won't be the case most of the time, as I try to deploy it after making a few meaningful commits or taking a break from developing it.
+The app is deployed on GitHub Pages and can be used there. You can try it out [here](https://michalkr52.github.io/l-system-visualiser/)! Keep in mind, that I'm deploying the website manually, and it could be a couple of commits behind. That won't be the case most of the time, as I try to always deploy it after finishing developing features and reaching other milestones.
 
 ### Run locally
 
