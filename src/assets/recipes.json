@@ -379,38 +379,6 @@
             "lengthFactor": null
         },
         {
-            "group": "Grids",
-            "name": "Mango Leaf",
-            "notes": null,
-            "axiom": "Y---Y",
-            "rules": [
-                {
-                    "predecessor": "X",
-                    "successor": "{F-F}{F-F}--[--X]{F-F}{F-F}--{F-F}{F-F}--"
-                },
-                {
-                    "predecessor": "Y",
-                    "successor": "f-F+X+F-fY"
-                }
-            ],
-            "angle": 60,
-            "lengthFactor": null
-        },
-        {
-            "group": "Grids",
-            "name": "Snake Kolam",
-            "notes": null,
-            "axiom": "F+XF+F+XF",
-            "rules": [
-                {
-                    "predecessor": "X",
-                    "successor": "X{F-F-F}+XF+F+X{F-F-F}+X-"
-                }
-            ],
-            "angle": 90,
-            "lengthFactor": null
-        },
-        {
             "group": "Plantlike",
             "name": "Bush 1",
             "notes": null,

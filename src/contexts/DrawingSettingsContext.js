@@ -10,24 +10,29 @@ export function DrawingSettingsProvider(props) {
         turnLeft: {char: "-", label: "Rotate left"},
         turnRight: {char: "+", label: "Rotate right"},
         pushPos: {char: "[", label: "Push position"},
-        popPos: {char: "]", label: "Pop position"}
+        popPos: {char: "]", label: "Pop position"},
+        multLength: {char: ">", label: "Multiply length"},
+        divLength: {char: "<", label: "Divide length"}
     };
 
     const [lineWidth, setLineWidth] = useState(3);
-    const [deltaAngle, setDeltaAngle] = useState(90);   // [deg]
     const [startingAngle, setStartingAngle] = useState(-90);   // [deg]
+    const [deltaAngle, setDeltaAngle] = useState(90);   // [deg]
+    const [lengthFactor, setLengthFactor] = useState(1);
     const [tokens, setTokens] = useState(initialTokenState);
 
     return (
         <DrawingSettingsContext.Provider value={{
             lineWidth: lineWidth,
+            startingAngle: startingAngle,
             deltaAngle: deltaAngle,
             tokens: tokens,
-            startingAngle: startingAngle,
+            lengthFactor: lengthFactor,
             setLineWidth: setLineWidth,
-            setDeltaAngle: setDeltaAngle,
-            setTokens: setTokens,
             setStartingAngle: setStartingAngle,
+            setDeltaAngle: setDeltaAngle,
+            setLengthFactor: setLengthFactor,
+            setTokens: setTokens,
             resetTokens: () => setTokens(initialTokenState)
         }}>
             {props.children}

@@ -7,9 +7,9 @@ import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
 function OutputCanvas(props) {
     const { dark, getColour } = useContext(ThemeContext);
     const { output, displayedStep } = useContext(AlgorithmContext);
-    const { lineWidth, deltaAngle, startingAngle, tokens } = useContext(DrawingSettingsContext);
+    const { lineWidth, deltaAngle, startingAngle, lengthFactor, tokens } = useContext(DrawingSettingsContext);
     const canvasRef = useRef(null);
-    const lineLength = 30;
+    const initialLineLength = 30;
     let scaleMultiplier = 0.85;
 
     const clearCanvas = () => {
@@ -20,7 +20,7 @@ function OutputCanvas(props) {
     }
 
     const measureDrawingDimensions = () => {
-        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI;
+        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI, lineLength = initialLineLength;
         let posStack = [];
         let minX = 0, maxX = 0, minY = 0, maxY = 0;
 
@@ -50,6 +50,12 @@ function OutputCanvas(props) {
                     y = pos.y;
                     angle = pos.angle;
                     break;
+                case tokens.multLength.char:
+                    lineLength *= lengthFactor;
+                    break;
+                case tokens.divLength.char:
+                    lineLength /= lengthFactor;
+                    break;
             }
         }
 
@@ -60,7 +66,7 @@ function OutputCanvas(props) {
         const ctx = canvasRef.current.getContext("2d");
         if (ctx === null || output === null || output.length === 0) return;
 
-        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI;
+        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI, lineLength = initialLineLength;
         let posStack = [];
         let { minX, maxX, minY, maxY } = measureDrawingDimensions();
         let scale = Math.min(props.width / (maxX - minX), props.height / (maxY - minY)) * scaleMultiplier;
@@ -100,6 +106,12 @@ function OutputCanvas(props) {
                     x = pos.x;
                     y = pos.y;
                     angle = pos.angle;
+                    break;
+                case tokens.multLength.char:
+                    lineLength *= lengthFactor;
+                    break;
+                case tokens.divLength.char:
+                    lineLength /= lengthFactor;
                     break;
             }
         }

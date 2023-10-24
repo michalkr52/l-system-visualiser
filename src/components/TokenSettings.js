@@ -18,7 +18,7 @@ function TokenSettings() {
                     );
                 })
             }
-            <button className="button revert-button" onClick={() => resetTokens()}>Revert to default</button>
+            <button className="button revert-button" onClick={() => resetTokens()}>Revert tokens to default</button>
         </div>
     );
 }
