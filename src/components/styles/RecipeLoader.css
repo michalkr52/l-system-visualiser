@@ -35,7 +35,7 @@
 
 #recipe-list {
     overflow-y: auto;
-    max-height: calc(100% - 36px); 
+    max-height: 564px; 
     margin-top: 12px;
 }
 
