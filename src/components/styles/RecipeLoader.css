@@ -14,7 +14,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 600px;
+    max-height: 600px;
     padding: 8px;
     background-color: var(--bg-panel);
     border: 1px solid var(--border);
@@ -50,4 +50,24 @@
 
 #recipe-modal .recipe-author a {
     color: var(--text-primary);
+}
+
+@media screen and (max-height: 720px) {
+    #recipe-modal {
+        max-height: 80vh;
+    }
+
+    #recipe-list {
+        max-height: calc(80vh - 36px); 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #recipe-modal {
+        width: 90%;
+    }
+
+    #recipe-modal .recipe-author {
+        bottom: -42px;
+    }
 }

@@ -9,14 +9,14 @@ function RuleEntry(props) {
     return (
         <div className="rule-entry">
             {index + 1}.
-            <input type="text" placeholder="predecessor" value={predecessor} 
+            <input type="text" placeholder="F" value={predecessor} 
                 onChange={e => updateRulePredecessor(index, e.target.value)}
-                className={invalidPredecessors.includes(index) ? "invalid" : ""}
+                className={invalidPredecessors.includes(index) ? "invalid predecessor" : "predecessor"}
                 disabled={confirmed} />
             &rarr;
-            <input type="text" placeholder="successor" value={successor} 
+            <input type="text" placeholder="Ff-+[]<>abcde..." value={successor} 
                 onChange={e => updateRuleSuccessor(index, e.target.value)}
-                className={invalidSuccessors.includes(index)  ? "invalid" : ""}
+                className={invalidSuccessors.includes(index)  ? "invalid successor" : "successor"}
                 disabled={confirmed} />
             <button className={"remove-rule" + (confirmed ? " disabled" : "")}
                 onClick={e => removeRule(index)} disabled={confirmed}>&#10006;</button>

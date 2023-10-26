@@ -120,3 +120,44 @@ input[type="text"]:focus {
     color: #777 !important;
     cursor: not-allowed !important;
 }
+
+.output-canvas-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1200px) {
+    .settings-panel {
+        width: 25vw;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #app {
+        flex-wrap: wrap;
+    }
+    
+    .settings-panel-left {
+        order: 2;
+        flex-basis: 49%;
+        flex-grow: 1;
+        border-right: none;
+    }
+    
+    .settings-panel-right {
+        order: 3;
+        flex-basis: 49%;
+        flex-grow: 1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .settings-panel-left {
+        flex-basis: 100%;
+    }
+    
+    .settings-panel-right {
+        flex-basis: 100%;
+    }
+}

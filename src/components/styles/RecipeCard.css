@@ -89,3 +89,17 @@
 .recipe-card .recipe-extended-settings > div {
     flex-basis: 50%;
 }
+
+@media screen and (max-width: 480px) {
+    .recipe-card .recipe-load-button {
+        margin: 0 12px 8px auto;
+    }
+
+    .recipe-card .recipe-expand {
+        transform: translateX(-35px) translateY(-8px);
+    }
+
+    .recipe-card .recipe-name {
+        font-size: 1.2rem;
+    }
+}

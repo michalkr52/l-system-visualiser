@@ -28,7 +28,7 @@ function App() {
                         </div>
                     </div>
                     <div className="output-canvas-container">
-                        <OutputCanvas width="600" height="500" />
+                        <OutputCanvas />
                         <OutputTextbox />
                     </div>
                     <div className={"settings-panel settings-panel-right"}>

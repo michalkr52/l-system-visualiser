@@ -35,3 +35,12 @@
     color: #d12828;
     cursor: pointer;
 }
+
+.rule-entry .predecessor {
+    width: 16px;
+    text-align: center;
+}
+
+.rule-entry .successor {
+    width: 60%;
+}

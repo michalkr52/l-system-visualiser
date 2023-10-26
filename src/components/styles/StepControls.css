@@ -37,3 +37,18 @@
 .step-controls button.step-control:disabled {
     cursor: not-allowed;
 }
+
+@media screen and (max-width: 900px) {
+    .step-controls {
+        position: absolute;
+        top: calc(100vh - 200px);
+        right: 20px;
+        width: unset;
+    }
+
+    .step-controls-title {
+        position: absolute;
+        top: calc(100vh - 220px);
+        right: 55px;
+    }
+}

@@ -1,13 +1,15 @@
-import { useRef, useEffect, useContext } from "react";
+import "./styles/OutputCanvas.css";
+import { useRef, useEffect, useContext, useState } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
 import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
-
 
 function OutputCanvas(props) {
     const { dark, getColour } = useContext(ThemeContext);
     const { output, displayedStep } = useContext(AlgorithmContext);
     const { lineWidth, deltaAngle, startingAngle, lengthFactor, tokens } = useContext(DrawingSettingsContext);
+    const [ canvasWidth, setCanvasWidth ] = useState(600);
+    const [ canvasHeight, setCanvasHeight ] = useState(500);
     const canvasRef = useRef(null);
     const initialLineLength = 30;
     let scaleMultiplier = 0.85;
@@ -16,7 +18,7 @@ function OutputCanvas(props) {
         const ctx = canvasRef.current.getContext("2d");
         ctx.fillStyle = getColour("bg-canvas");
         ctx.setTransform(1, 0, 0, 1, 0, 0);                 // default origin, top-left is (0, 0)
-        ctx.fillRect(0, 0, props.width, props.height);
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
     }
 
     const measureDrawingDimensions = () => {
@@ -72,10 +74,10 @@ function OutputCanvas(props) {
         let x = 0, y = 0, angle = startingAngle / 180 * Math.PI, lineLength = initialLineLength;
         let posStack = [];
         let { minX, maxX, minY, maxY } = measureDrawingDimensions();
-        let scale = Math.min(props.width / (maxX - minX), props.height / (maxY - minY)) * scaleMultiplier;
+        let scale = Math.min(canvasWidth / (maxX - minX), canvasHeight / (maxY - minY)) * scaleMultiplier;
 
         clearCanvas();
-        ctx.setTransform(scale, 0, 0, scale, props.width / 2, props.height / 2);    // origin set to center of canvas
+        ctx.setTransform(scale, 0, 0, scale, canvasWidth / 2, canvasHeight / 2);    // origin set to center of canvas
         ctx.translate(-minX - (maxX - minX) / 2, -minY - (maxY - minY) / 2);        // center drawing
         ctx.strokeStyle = getColour("text-primary");
         ctx.lineWidth = lineWidth;
@@ -123,17 +125,30 @@ function OutputCanvas(props) {
         }
     }
 
-    useEffect(() => {
+    const handleResize = () => {
+        const canvasElement = canvasRef.current;
+        setCanvasWidth(canvasElement.clientWidth);
+        setCanvasHeight(canvasElement.clientHeight);
+        canvasElement.width = canvasElement.clientWidth;
+        canvasElement.height = canvasElement.clientHeight;
         clearCanvas();
-    }, []);
+    };
+
+    useEffect(() => {
+        handleResize();
+        console.log(canvasWidth, canvasHeight);
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        }
+    }, [handleResize]);
 
     useEffect(() => {
         draw();
     }, [output, dark, lineWidth, deltaAngle, startingAngle, tokens, lengthFactor]);
 
     return (
-        // todo: variable size, responsive (this one fits a 1200px wide app)
-        <canvas ref={canvasRef} id="output-canvas" width={props.width} height={props.height}></canvas>
+        <canvas ref={canvasRef} id="output-canvas"></canvas>
     );
 }
 

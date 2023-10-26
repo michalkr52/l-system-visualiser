@@ -13,6 +13,7 @@
 }
 
 .range-input input[type="range"] {
+    width: 50%;
     appearance: none;
     overflow: hidden;
     height: 13px;
