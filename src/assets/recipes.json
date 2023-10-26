@@ -513,8 +513,8 @@
                     "successor": ">[-FX]+FX"
                 }
             ],
-            "angle": 20,
-            "lengthFactor": 1.65,
+            "angle": 40,
+            "lengthFactor": 0.6,
             "tokens": "F+-[]>"
         },
         {

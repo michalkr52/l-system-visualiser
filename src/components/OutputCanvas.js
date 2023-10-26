@@ -42,13 +42,16 @@ function OutputCanvas(props) {
                     angle -= Math.PI * (deltaAngle / 180);
                     break;
                 case tokens.pushPos.char:
-                    posStack.push({ x: x, y: y, angle: angle });
+                    posStack.push({ 
+                        x: x, y: y, angle: angle, lineLength: lineLength
+                        });
                     break;
                 case tokens.popPos.char:
                     let pos = posStack.pop();
                     x = pos.x;
                     y = pos.y;
                     angle = pos.angle;
+                    lineLength = pos.lineLength;
                     break;
                 case tokens.multLength.char:
                     lineLength *= lengthFactor;
@@ -99,13 +102,16 @@ function OutputCanvas(props) {
                     angle -= Math.PI * (deltaAngle / 180);
                     break;
                 case tokens.pushPos.char:
-                    posStack.push({ x: x, y: y, angle: angle });
+                    posStack.push({ 
+                        x: x, y: y, angle: angle, lineLength: lineLength
+                     });
                     break;
                 case tokens.popPos.char:
                     let pos = posStack.pop();
                     x = pos.x;
                     y = pos.y;
                     angle = pos.angle;
+                    lineLength = pos.lineLength;
                     break;
                 case tokens.multLength.char:
                     lineLength *= lengthFactor;
@@ -123,7 +129,7 @@ function OutputCanvas(props) {
 
     useEffect(() => {
         draw();
-    }, [output, dark, lineWidth, deltaAngle, startingAngle, tokens]);
+    }, [output, dark, lineWidth, deltaAngle, startingAngle, tokens, lengthFactor]);
 
     return (
         // todo: variable size, responsive (this one fits a 1200px wide app)
