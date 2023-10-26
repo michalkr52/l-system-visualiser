@@ -6,7 +6,7 @@ import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
 
 function OutputCanvas(props) {
     const { dark, getColour } = useContext(ThemeContext);
-    const { output, displayedStep } = useContext(AlgorithmContext);
+    const { output, confirmed, displayedStep } = useContext(AlgorithmContext);
     const { lineWidth, deltaAngle, startingAngle, lengthFactor, tokens } = useContext(DrawingSettingsContext);
     const [ canvasWidth, setCanvasWidth ] = useState(600);
     const [ canvasHeight, setCanvasHeight ] = useState(500);
@@ -127,16 +127,20 @@ function OutputCanvas(props) {
 
     const handleResize = () => {
         const canvasElement = canvasRef.current;
-        setCanvasWidth(canvasElement.clientWidth);
-        setCanvasHeight(canvasElement.clientHeight);
-        canvasElement.width = canvasElement.clientWidth;
-        canvasElement.height = canvasElement.clientHeight;
+        let newWidth = canvasElement.clientWidth;
+        let newHeight = window.outerHeight - 150;
+        
+        setCanvasWidth(newWidth);
+        setCanvasHeight(newHeight);
+        canvasElement.width = newWidth;
+        canvasElement.height = newHeight;
+
         clearCanvas();
+        if (output[displayedStep] !== undefined) draw();
     };
 
     useEffect(() => {
         handleResize();
-        console.log(canvasWidth, canvasHeight);
         window.addEventListener("resize", handleResize);
         return () => {
             window.removeEventListener("resize", handleResize);

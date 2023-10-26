@@ -23,8 +23,8 @@ function StepControls() {
     
     return (
         <div className="settings-content align-bottom">
-            <div className="step-controls-title">Step</div>
             <div className="step-controls">
+                <div className="step-controls-title">Step</div>
                 <button className="step-control" onClick={decrementDisplayedStep} disabled={!confirmed}>&#10094;</button>
                 <div className="step-number">{displayedStep}</div>
                 <button className="step-control" onClick={incrementDisplayedStep} disabled={!confirmed}>&#10095;</button>
