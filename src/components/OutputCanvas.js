@@ -128,7 +128,9 @@ function OutputCanvas(props) {
     const handleResize = () => {
         const canvasElement = canvasRef.current;
         let newWidth = canvasElement.clientWidth;
-        let newHeight = window.outerHeight - 150;
+        let newHeight;
+        if (window.outerHeight <= 800 || window.outerWidth <= 900) newHeight = window.outerHeight - 150;
+        else newHeight = 600;
         
         setCanvasWidth(newWidth);
         setCanvasHeight(newHeight);
