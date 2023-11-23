@@ -50,7 +50,7 @@ Result:
 
 The visualiser allows for definition of an axiom and multiple rules. You can control how each character is processed for drawing, by choosing which action is triggered by which token. 
 
-I'm keeping track of planned features and things worth keeping in mind on [my Trello board](https://trello.com/b/v6IxAPKg/l-system-visualiser). It's being occasionally updated regularly, when I come up with something I want to do later. I try to keep it tidy and free of any inconsistencies, but it's not my priority to have it perfectly organised.
+I'm keeping track of planned features and things worth keeping in mind on [my Trello board](https://trello.com/b/v6IxAPKg/l-system-visualiser). It's being occasionally updated, when I come up with something I want to do later. I try to keep it tidy and free of any inconsistencies, but it's not my priority to have it perfectly organised.
 
 ## Usage
 
