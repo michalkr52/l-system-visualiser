@@ -4,15 +4,26 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
 import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
 
+class PathSegment {
+    constructor(x1, y1, x2, y2) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+    }
+}
+
 function OutputCanvas(props) {
     const { dark, getColour } = useContext(ThemeContext);
     const { output, confirmed, displayedStep } = useContext(AlgorithmContext);
     const { lineWidth, deltaAngle, startingAngle, lengthFactor, tokens } = useContext(DrawingSettingsContext);
     const [ canvasWidth, setCanvasWidth ] = useState(600);
     const [ canvasHeight, setCanvasHeight ] = useState(500);
+    const [ pathSegments, setPathSegments ] = useState([]);
+    const [ pathDimensions, setPathDimensions ] = useState([]);         // rectangle [x1, y1, x2, y2]
     const canvasRef = useRef(null);
     const initialLineLength = 30;
-    let scaleMultiplier = 0.85;
+    let scaleMultiplier = 0.8;
 
     const clearCanvas = () => {
         const ctx = canvasRef.current.getContext("2d");
@@ -21,79 +32,23 @@ function OutputCanvas(props) {
         ctx.fillRect(0, 0, canvasWidth, canvasHeight);
     }
 
-    const measureDrawingDimensions = () => {
+    const calculatePath = () => {
+        if (output === null || output.length === 0) return;
+
         let x = 0, y = 0, angle = startingAngle / 180 * Math.PI, lineLength = initialLineLength;
+        let minX = Number.MAX_VALUE, minY = Number.MAX_VALUE, maxX = Number.MIN_VALUE, maxY = Number.MIN_VALUE;
         let posStack = [];
-        let minX = 0, maxX = 0, minY = 0, maxY = 0;
+        let newPathSegments = [];
 
         for (let symbol of output[displayedStep]) {
             switch (symbol) {
                 case tokens.forwardDraw.char:
-                case tokens.forwardNoDraw.char:
+                    let x1 = x, y1 = y;
                     x += lineLength * Math.cos(angle);
                     y += lineLength * Math.sin(angle);
-                    minX = Math.min(minX, x);
-                    maxX = Math.max(maxX, x);
-                    minY = Math.min(minY, y);
-                    maxY = Math.max(maxY, y);
-                    break;
-                case tokens.turnRight.char:
-                    angle += Math.PI * (deltaAngle / 180);
-                    break;
-                case tokens.turnLeft.char:
-                    angle -= Math.PI * (deltaAngle / 180);
-                    break;
-                case tokens.pushPos.char:
-                    posStack.push({ 
-                        x: x, y: y, angle: angle, lineLength: lineLength
-                        });
-                    break;
-                case tokens.popPos.char:
-                    let pos = posStack.pop();
-                    x = pos.x;
-                    y = pos.y;
-                    angle = pos.angle;
-                    lineLength = pos.lineLength;
-                    break;
-                case tokens.multLength.char:
-                    lineLength *= lengthFactor;
-                    break;
-                case tokens.divLength.char:
-                    lineLength /= lengthFactor;
-                    break;
-            }
-        }
-
-        return { minX, maxX, minY, maxY };
-    }
-
-    const draw = () => {
-        const ctx = canvasRef.current.getContext("2d");
-        if (ctx === null || output === null || output.length === 0) return;
-
-        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI, lineLength = initialLineLength;
-        let posStack = [];
-        let { minX, maxX, minY, maxY } = measureDrawingDimensions();
-        let scale = Math.min(canvasWidth / (maxX - minX), canvasHeight / (maxY - minY)) * scaleMultiplier;
-
-        clearCanvas();
-        ctx.setTransform(scale, 0, 0, scale, canvasWidth / 2, canvasHeight / 2);    // origin set to center of canvas
-        ctx.translate(-minX - (maxX - minX) / 2, -minY - (maxY - minY) / 2);        // center drawing
-        ctx.strokeStyle = getColour("text-primary");
-        ctx.lineWidth = lineWidth;
-
-        for (let symbol of output[displayedStep]) {
-            switch (symbol) {
-                case tokens.forwardDraw.char:
-                    ctx.beginPath();
-                    ctx.moveTo(x, y);
-                    x += lineLength * Math.cos(angle);
-                    y += lineLength * Math.sin(angle);
-                    ctx.lineTo(x, y);
-                    ctx.stroke();
+                    newPathSegments.push(new PathSegment(x1, y1, x, y));
                     break;
                 case tokens.forwardNoDraw.char:
-                    ctx.moveTo(x, y);
                     x += lineLength * Math.cos(angle);
                     y += lineLength * Math.sin(angle);
                     break;
@@ -122,6 +77,42 @@ function OutputCanvas(props) {
                     lineLength /= lengthFactor;
                     break;
             }
+
+            minX = minX > x ? x : minX;
+            minY = minY > y ? y : minY;
+            maxX = maxX < x ? x : maxX;
+            maxY = maxY < y ? y : maxY;
+        }
+
+        setPathSegments(newPathSegments);
+        setPathDimensions([minX, minY, maxX, maxY]);
+    }
+
+    const scaleCanvasToPath = () => {
+        const ctx = canvasRef.current.getContext("2d");
+        if (ctx === null) return;
+
+        let [minX, minY, maxX, maxY] = pathDimensions;
+        let scale = Math.min(canvasWidth / (maxX - minX), canvasHeight / (maxY - minY)) * scaleMultiplier;
+
+        ctx.setTransform(scale, 0, 0, scale, canvasWidth / 2, canvasHeight / 2);    // origin set to center of canvas
+        ctx.translate(-minX - (maxX - minX) / 2, -minY - (maxY - minY) / 2);        // center drawing
+    }
+
+    const drawPath = () => {
+        const ctx = canvasRef.current.getContext("2d");
+        if (ctx === null) return;
+
+        clearCanvas();
+        scaleCanvasToPath();
+        ctx.strokeStyle = getColour("text-primary");
+        ctx.lineWidth = lineWidth;
+
+        for (let segment of pathSegments) {
+            ctx.beginPath();
+            ctx.moveTo(segment.x1, segment.y1);
+            ctx.lineTo(segment.x2, segment.y2);
+            ctx.stroke();
         }
     }
 
@@ -138,7 +129,7 @@ function OutputCanvas(props) {
         canvasElement.height = newHeight;
 
         clearCanvas();
-        if (output[displayedStep] !== undefined) draw();
+        if (output[displayedStep] !== undefined) drawPath();
     };
 
     useEffect(() => {
@@ -149,9 +140,16 @@ function OutputCanvas(props) {
         }
     }, [handleResize]);
 
+    // Recalculate and redraw: dependencies change the path
     useEffect(() => {
-        draw();
-    }, [output, dark, lineWidth, deltaAngle, startingAngle, tokens, lengthFactor]);
+        calculatePath();
+        drawPath();
+    }, [output, deltaAngle, startingAngle, tokens, lengthFactor]);
+
+    // Only redraw: dependencies don't change the path
+    useEffect(() => {
+        drawPath();
+    }, [dark, lineWidth]);
 
     return (
         <canvas ref={canvasRef} id="output-canvas"></canvas>
