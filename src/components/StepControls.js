@@ -3,16 +3,16 @@ import { useCallback, useContext, useEffect } from "react";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
 
 function StepControls() {
-    const { confirmed, displayedStep, incrementDisplayedStep, decrementDisplayedStep } = useContext(AlgorithmContext);
+    const { inputConfirmed, displayedStep, incrementDisplayedStep, decrementDisplayedStep } = useContext(AlgorithmContext);
 
     const handleKeyDown = useCallback((event) => {
-        if (!confirmed || event.target.localName === "input") return;
+        if (!inputConfirmed || event.target.localName === "input") return;
         if (event.key === "ArrowLeft") {
             decrementDisplayedStep();
         } else if (event.key === "ArrowRight") {
             incrementDisplayedStep();
         }
-    }, [confirmed, displayedStep]);
+    }, [inputConfirmed, displayedStep]);
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyDown);
@@ -25,9 +25,9 @@ function StepControls() {
         <div className="settings-content align-bottom">
             <div className="step-controls">
                 <div className="step-controls-title">Step</div>
-                <button className="step-control" onClick={decrementDisplayedStep} disabled={!confirmed}>&#10094;</button>
+                <button className="step-control" onClick={decrementDisplayedStep} disabled={!inputConfirmed}>&#10094;</button>
                 <div className="step-number">{displayedStep}</div>
-                <button className="step-control" onClick={incrementDisplayedStep} disabled={!confirmed}>&#10095;</button>
+                <button className="step-control" onClick={incrementDisplayedStep} disabled={!inputConfirmed}>&#10095;</button>
             </div>
         </div>
     );

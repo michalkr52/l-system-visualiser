@@ -4,7 +4,7 @@ import { AlgorithmContext } from "../contexts/AlgorithmContext";
 import { useContext } from "react";
 
 function RuleSettings() {
-    const { rules, confirmed, addRule } = useContext(AlgorithmContext);
+    const { rules, inputConfirmed, addRule } = useContext(AlgorithmContext);
     
     return (
         <div id="rule-settings">
@@ -20,8 +20,8 @@ function RuleSettings() {
                         />
                     );
                 })}
-                <button className={"add-rule" + (confirmed ? " disabled" : "")}
-                    onClick={addRule.bind(null, "", "")} disabled={confirmed}>+</button>
+                <button className={"add-rule" + (inputConfirmed ? " disabled" : "")}
+                    onClick={addRule.bind(null, "", "")} disabled={inputConfirmed}>+</button>
             </div>
         </div>
     );

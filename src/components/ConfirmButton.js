@@ -3,16 +3,13 @@ import { useCallback, useContext, useEffect } from "react";
 import { AlgorithmContext } from "../contexts/AlgorithmContext";
 
 function ConfirmButton() {
-    const { rules, axiom, confirmed, setConfirmed, onConfirm } = useContext(AlgorithmContext);
+    const { rules, axiom, inputConfirmed, setConfirmed, onConfirm } = useContext(AlgorithmContext);
 
     const handleKeyDown = useCallback((event) => {
-        // if (event.key === "Enter" && !confirmed) {
-        //     onConfirm();
-        // }
-        if (event.key === "Escape" && confirmed) {
+        if (event.key === "Escape" && inputConfirmed) {
             setConfirmed(false);
         }
-    }, [confirmed, axiom, rules]);
+    }, [inputConfirmed, axiom, rules]);
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyDown);
@@ -21,7 +18,7 @@ function ConfirmButton() {
         }
     }, [handleKeyDown]);
 
-    if (confirmed) {
+    if (inputConfirmed) {
         return (
             <button className="button confirm-button confirm-true" onClick={e => setConfirmed(false)}>Edit rules</button>
         );

@@ -15,7 +15,7 @@ export function AlgorithmProvider(props) {
     const [invalidPredecessors, setInvalidPredecessors] = useState([]);
     const [invalidSuccessors, setInvalidSuccessors] = useState([]);
     const [isAxiomInvalid, setIsAxiomInvalid] = useState(false);
-    const [confirmed, setConfirmed] = useState(false);
+    const [inputConfirmed, setInputConfirmed] = useState(false);
 
     const addRule = (predecessor, successor) => {
         rules.push({
@@ -65,26 +65,26 @@ export function AlgorithmProvider(props) {
             setInvalidPredecessors([]);
             setInvalidSuccessors([]);
             setDisplayedStep(initialStep);
-            setConfirmed(true);
+            setInputConfirmed(true);
             setOutput([]);
         }
         else {
             setInvalidPredecessors([...invalidPre]);
             setInvalidSuccessors([...invalidSuc]);
-            setConfirmed(false);
+            setInputConfirmed(false);
         }
     };
 
     // Set initial output after confirming and clearing the old output
     useEffect(() => {
-        if (output.length === 0 && confirmed) {
+        if (output.length === 0 && inputConfirmed) {
             setOutput(generateOutput(initialStep, output, rules, axiom));
         }
     }, [output]);
 
     // Generate current output after changing the displayed step
     useEffect(() => {
-        if (confirmed) {
+        if (inputConfirmed) {
             setOutput(generateOutput(displayedStep, output, rules, axiom));
         }
     }, [displayedStep]);
@@ -98,11 +98,11 @@ export function AlgorithmProvider(props) {
             invalidPredecessors: invalidPredecessors,
             invalidSuccessors: invalidSuccessors,
             isAxiomInvalid: isAxiomInvalid,
-            confirmed: confirmed,
+            inputConfirmed: inputConfirmed,
             setRules: setRules,
             setAxiom: setAxiom,
             setOutput: setOutput,
-            setConfirmed: setConfirmed,
+            setConfirmed: setInputConfirmed,
             incrementDisplayedStep: incrementDisplayedStep,
             decrementDisplayedStep: decrementDisplayedStep,
             addRule: addRule,
