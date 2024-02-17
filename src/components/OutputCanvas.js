@@ -24,6 +24,7 @@ function OutputCanvas(props) {
     const [ currentZoom, setCurrentZoom ] = useState(0.8);
     const [ viewportPan, setViewportPan ] = useState({ x: 0, y: 0 });
     const [ isPanning, setIsPanning ] = useState(false);
+    const [ oldScale, setOldScale ] = useState(1);
     const canvasRef = useRef(null);
     const mousePosRef = useRef({ x: 0, y: 0 });              // (0, 0) is at the center of the canvas
     const lastMousePosRef = useRef({ x: 0, y: 0 });  
@@ -52,7 +53,7 @@ function OutputCanvas(props) {
         for (let symbol of output[displayedStep]) {
             switch (symbol) {
                 case tokens.forwardDraw.char:
-                    let x1 = x, y1 = y;
+                    const x1 = x, y1 = y;
                     x += lineLength * Math.cos(angle);
                     y += lineLength * Math.sin(angle);
                     newPathSegments.push(new PathSegment(x1, y1, x, y));
@@ -73,7 +74,7 @@ function OutputCanvas(props) {
                      });
                     break;
                 case tokens.popPos.char:
-                    let pos = posStack.pop();
+                    const pos = posStack.pop();
                     x = pos.x;
                     y = pos.y;
                     angle = pos.angle;
@@ -101,15 +102,28 @@ function OutputCanvas(props) {
         const ctx = canvasRef.current.getContext("2d");
         if (ctx === null || pathDimensions.length === 0) return;
 
-        let [minX, minY, maxX, maxY] = pathDimensions;
-        let scale = Math.min(canvasWidth / (maxX - minX), canvasHeight / (maxY - minY));
-        let zoom = scale * currentZoom;
+        const [minX, minY, maxX, maxY] = pathDimensions;
+        const scale = Math.min(canvasWidth / (maxX - minX), canvasHeight / (maxY - minY));
+        const zoom = scale * currentZoom;
         scaleRef.current = scale;
+
+        let viewportPanX = -viewportPan.x;
+        let viewportPanY = -viewportPan.y;
+
+        // adjust panning to new scale
+        if (scale != oldScale) {
+            console.log(scale, oldScale);
+            const scaleFactor = oldScale / scale;
+            viewportPanX *= scaleFactor;
+            viewportPanY *= scaleFactor;
+            setOldScale(scale);
+            setViewportPan({ x: -viewportPanX, y: -viewportPanY });
+        }
 
         // scale path to canvas, center and apply panning
         ctx.setTransform(zoom, 0, 0, zoom, canvasWidth / 2, canvasHeight / 2);      // origin set to center of canvas
         ctx.translate(-minX - (maxX - minX) / 2, -minY - (maxY - minY) / 2);        // center drawing
-        ctx.translate(-viewportPan.x, -viewportPan.y);    // panning
+        ctx.translate(viewportPanX, viewportPanY);          // panning
         
         ctx.lineWidth = lineWidth / (currentZoom + 0.4) * ((Math.min(maxX - minX, maxY - minY) / 1000) + 1);
     }
@@ -148,12 +162,12 @@ function OutputCanvas(props) {
 
     const handleMouseMove = (event) => {
         if (canvasRef.current) {
-            let windowMousePos = { x: event.clientX, y: event.clientY };
-            let canvasTopLeftPos = { x: canvasRef.current.offsetLeft, y: canvasRef.current.offsetTop };
+            const windowMousePos = { x: event.clientX, y: event.clientY };
+            const canvasTopLeftPos = { x: canvasRef.current.offsetLeft, y: canvasRef.current.offsetTop };
 
             // (0, 0) at the center of the canvas
-            let mousePosX = windowMousePos.x - canvasTopLeftPos.x - canvasWidth / 2;
-            let mousePosY = windowMousePos.y - canvasTopLeftPos.y - canvasHeight / 2;
+            const mousePosX = windowMousePos.x - canvasTopLeftPos.x - canvasWidth / 2;
+            const mousePosY = windowMousePos.y - canvasTopLeftPos.y - canvasHeight / 2;
             mousePosRef.current = { x: mousePosX, y: mousePosY };
 
             if (isPanning) handleMousePanning(event);
@@ -179,15 +193,15 @@ function OutputCanvas(props) {
         if (inputConfirmed) {
             event.preventDefault();
     
-            let zoomAmplitude = 1 - event.deltaY * zoomSensitivity;
+            const zoomAmplitude = 1 - event.deltaY * zoomSensitivity;
             let zoom = zoomAmplitude * currentZoom;
             if (zoom < minZoom) zoom = minZoom;
             else if (zoom > maxZoom) zoom = maxZoom;
 
-            let viewportCenterDeltaX = (mousePosRef.current.x / currentZoom) * (1 - 1 / zoomAmplitude) / scaleRef.current;
-            let viewportCenterDeltaY = (mousePosRef.current.y / currentZoom) * (1 - 1 / zoomAmplitude) / scaleRef.current;
-            let viewportCenterX = viewportPan.x + viewportCenterDeltaX;
-            let viewportCenterY = viewportPan.y + viewportCenterDeltaY;
+            const viewportCenterDeltaX = (mousePosRef.current.x / currentZoom) * (1 - 1 / zoomAmplitude) / scaleRef.current;
+            const viewportCenterDeltaY = (mousePosRef.current.y / currentZoom) * (1 - 1 / zoomAmplitude) / scaleRef.current;
+            const viewportCenterX = viewportPan.x + viewportCenterDeltaX;
+            const viewportCenterY = viewportPan.y + viewportCenterDeltaY;
 
             setCurrentZoom(zoom);
             setViewportPan({ x: viewportCenterX, y: viewportCenterY });
@@ -227,8 +241,9 @@ function OutputCanvas(props) {
         }
     }, [handleWheel]);
 
-    // Recalculate and redraw: dependencies change the path
+    // Recalculate and redraw: dependencies change path
     useEffect(() => {
+        setOldScale(scaleRef.current);
         calculatePath();
         drawPath();
     }, [output, deltaAngle, startingAngle, tokens, lengthFactor]);
@@ -243,11 +258,6 @@ function OutputCanvas(props) {
         setCurrentZoom(initialZoom);
         setViewportPan({ x: 0, y: 0 });
     }, [inputConfirmed]);
-
-    // Scale panning to new canvas scale
-    useEffect(() => {
-        
-    }, [displayedStep]);
 
     return (
         <canvas ref={canvasRef} onMouseDown={startPanning} id="output-canvas"></canvas>
