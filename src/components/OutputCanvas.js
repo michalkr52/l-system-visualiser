@@ -15,7 +15,7 @@ class PathSegment {
 
 function OutputCanvas(props) {
     const { dark, getColour } = useContext(ThemeContext);
-    const { output, inputConfirmed, displayedStep } = useContext(AlgorithmContext);
+    const { rules, output, inputConfirmed, displayedStep } = useContext(AlgorithmContext);
     const { lineWidth, deltaAngle, startingAngle, lengthFactor, tokens } = useContext(DrawingSettingsContext);
     const [ canvasWidth, setCanvasWidth ] = useState(600);
     const [ canvasHeight, setCanvasHeight ] = useState(500);
@@ -32,7 +32,7 @@ function OutputCanvas(props) {
     const initialLineLength = 30;
     const initialZoom = 0.8;
     const minZoom = 0.25;
-    const maxZoom = 30;
+    const maxZoom = 40;
     const zoomSensitivity = 0.001;
 
     const clearCanvas = () => {
@@ -112,7 +112,6 @@ function OutputCanvas(props) {
 
         // adjust panning to new scale
         if (scale != oldScale) {
-            console.log(scale, oldScale);
             const scaleFactor = oldScale / scale;
             viewportPanX *= scaleFactor;
             viewportPanY *= scaleFactor;
@@ -235,9 +234,11 @@ function OutputCanvas(props) {
     }, [handleMouseMove]);
 
     useEffect(() => {
-        window.addEventListener("wheel", handleWheel);
-        return () => {
-            window.removeEventListener("wheel", handleWheel);
+        if (canvasRef.current) {
+            canvasRef.current.addEventListener("wheel", handleWheel);
+            return () => {
+                canvasRef.current.removeEventListener("wheel", handleWheel);
+            }
         }
     }, [handleWheel]);
 
@@ -257,7 +258,7 @@ function OutputCanvas(props) {
     useEffect(() => {
         setCurrentZoom(initialZoom);
         setViewportPan({ x: 0, y: 0 });
-    }, [inputConfirmed]);
+    }, [rules]);
 
     return (
         <canvas ref={canvasRef} onMouseDown={startPanning} id="output-canvas"></canvas>
