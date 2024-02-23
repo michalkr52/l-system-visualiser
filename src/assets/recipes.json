@@ -3,6 +3,7 @@
         {
             "group": "General",
             "name": "Koch Curve",
+            "imageName": "koch-curve.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -12,12 +13,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Dragon Curve",
+            "imageName": "dragon-curve.png",
             "notes": null,
             "axiom": "FX",
             "rules": [
@@ -31,12 +32,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Lévy Curve",
+            "imageName": "levy-curve.png",
             "notes": null,
             "axiom": "F",
             "rules": [
@@ -46,12 +47,12 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Classic Sierpinski Curve",
+            "imageName": "classic-sierpinski-curve.png",
             "notes": "Rules by Chris Wallace",
             "axiom": "F--XF--F--XF",
             "rules": [
@@ -61,12 +62,12 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Triangle",
+            "imageName": "triangle.png",
             "notes": null,
             "axiom": "F+F+F",
             "rules": [
@@ -76,12 +77,12 @@
                 }
             ],
             "angle": 120,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Cross 1",
+            "imageName": "cross-1.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -91,12 +92,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+"
         },
         {
             "group": "General",
             "name": "Cross 2",
+            "imageName": "cross-2.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -106,12 +107,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Pentaplexity",
+            "imageName": "pentaplexity.png",
             "notes": null,
             "axiom": "F++F++F++F++F",
             "rules": [
@@ -121,12 +122,12 @@
                 }
             ],
             "angle": 36,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Tiles",
+            "imageName": "tiles.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -136,12 +137,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Rings",
+            "imageName": "rings.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -151,12 +152,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Square Sierpinski",
+            "imageName": "square-sierpinski.png",
             "notes": null,
             "axiom": "F+XF+F+XF",
             "rules": [
@@ -166,12 +167,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Sierpinski Arrowhead",
+            "imageName": "sierpinski-arrowhead.png",
             "notes": null,
             "axiom": "YF",
             "rules": [
@@ -185,12 +186,12 @@
                 }
             ],
             "angle": 60,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Crystal",
+            "imageName": "crystal.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -200,12 +201,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+"
         },
         {
             "group": "General",
             "name": "Von Koch Snowflake",
+            "imageName": "von-koch-snowflake.png",
             "notes": null,
             "axiom": "F++F++F",
             "rules": [
@@ -215,12 +216,12 @@
                 }
             ],
             "angle": 60,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Quadratic Snowflake 1",
+            "imageName": "quadratic-snowflake-1.png",
             "notes": null,
             "axiom": "F",
             "rules": [
@@ -230,12 +231,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Quadratic Snowflake 2",
+            "imageName": "quadratic-snowflake-2.png",
             "notes": "Variation by Hasan Hosam",
             "axiom": "FF+FF+FF+FF",
             "rules": [
@@ -245,12 +246,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Quadratic Koch Island 1",
+            "imageName": "quadratic-koch-island-1.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -260,12 +261,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Quadratic Koch Island 2",
+            "imageName": "quadratic-koch-island-2.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -275,12 +276,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "General",
             "name": "Quadratic Koch Island 3",
+            "imageName": "quadratic-koch-island-3.png",
             "notes": "Variation by Hasan Hosam",
             "axiom": "X+X+X+X+X+X+X+X",
             "rules": [
@@ -294,12 +295,12 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "Grids",
             "name": "Quadratic Gosper",
+            "imageName": "quadratic-gosper.png",
             "notes": null,
             "axiom": "-YF",
             "rules": [
@@ -313,12 +314,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "Grids",
             "name": "Hexagonal Gosper",
+            "imageName": "hexagonal-gosper.png",
             "notes": "Attributed to Mandelbrot, 1982",
             "axiom": "XF",
             "rules": [
@@ -332,12 +333,12 @@
                 }
             ],
             "angle": 60,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "Grids",
             "name": "Peano Curve",
+            "imageName": "peano-curve.png",
             "notes": null,
             "axiom": "X",
             "rules": [
@@ -351,12 +352,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "Grids",
             "name": "Board",
+            "imageName": "board.png",
             "notes": null,
             "axiom": "F+F+F+F",
             "rules": [
@@ -366,12 +367,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+"
         },
         {
             "group": "Grids",
             "name": "Hilbert",
+            "imageName": "hilbert.png",
             "notes": "Attributed to the German mathematician David Hilbert, circa 1891",
             "axiom": "X",
             "rules": [
@@ -385,12 +386,12 @@
                 }
             ],
             "angle": 90,
-            "lengthFactor": null,
             "tokens": "F+-"
         },
         {
             "group": "Grids",
             "name": "Krishna Anklets",
+            "imageName": "krishna-anklets.png",
             "notes": null,
             "axiom": "-X--X",
             "rules": [
@@ -400,12 +401,12 @@
                 }
             ],
             "angle": 45,
-            "lengthFactor": null,
             "tokens": "F-"
         },
         {
             "group": "Plantlike",
             "name": "Bush 1",
+            "imageName": "bush-1.png",
             "notes": null,
             "axiom": "X",
             "rules": [
@@ -419,12 +420,12 @@
                 }
             ],
             "angle": 22.5,
-            "lengthFactor": null,
             "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
             "name": "Bush 2",
+            "imageName": "bush-2.png",
             "notes": null,
             "axiom": "Y",
             "rules": [
@@ -438,12 +439,12 @@
                 }
             ],
             "angle": 25.7,
-            "lengthFactor": null,
             "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
             "name": "Bush 3",
+            "imageName": "bush-3.png",
             "notes": null,
             "axiom": "F",
             "rules": [
@@ -453,12 +454,12 @@
                 }
             ],
             "angle": 22.5,
-            "lengthFactor": null,
             "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
             "name": "Bush 4",
+            "imageName": "bush-4.png",
             "notes": null,
             "axiom": "F",
             "rules": [
@@ -468,12 +469,12 @@
                 }
             ],
             "angle": 35,
-            "lengthFactor": null,
             "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
             "name": "Bush 5",
+            "imageName": "bush-5.png",
             "notes": "Attributed to Deitmar Saupe",
             "axiom": "VZFFF",
             "rules": [
@@ -499,12 +500,12 @@
                 }
             ],
             "angle": 20,
-            "lengthFactor": null,
             "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
             "name": "Bush 6",
+            "imageName": "bush-6.png",
             "notes": null,
             "axiom": "FX",
             "rules": [
@@ -515,11 +516,13 @@
             ],
             "angle": 40,
             "lengthFactor": 0.6,
+            "widthFactor": 0.7,
             "tokens": "F+-[]>"
         },
         {
             "group": "Plantlike",
             "name": "Stick 1",
+            "imageName": "stick-1.png",
             "notes": null,
             "axiom": "X",
             "rules": [
@@ -533,12 +536,12 @@
                 }
             ],
             "angle": 20,
-            "lengthFactor": null,
             "tokens": "F+-[]"
         },
         {
             "group": "Plantlike",
             "name": "Algae 1",
+            "imageName": "algae-1.png",
             "notes": null,
             "axiom": "aF",
             "rules": [
@@ -628,12 +631,12 @@
                 }
             ],
             "angle": 12,
-            "lengthFactor": null,
             "tokens": "Ff+-[]"
         },
         {
             "group": "Plantlike",
             "name": "Algae 2",
+            "imageName": "algae-2.png",
             "notes": null,
             "axiom": "aF",
             "rules": [
@@ -735,12 +738,12 @@
                 }
             ],
             "angle": 12,
-            "lengthFactor": null,
             "tokens": "Ff+-[]"
         },
         {
             "group": "Plantlike",
             "name": "Leaf 1",
+            "imageName": "leaf-1.png",
             "notes": null,
             "axiom": "a",
             "rules": [
@@ -767,11 +770,13 @@
             ],
             "angle": 45,
             "lengthFactor": 1.36,
+            "widthFactor": 1.25,
             "tokens": "F+-[]><"
         },
         {
             "group": "Plantlike",
             "name": "Weed 1",
+            "imageName": "weed-1.png",
             "notes": null,
             "axiom": "F",
             "rules": [
@@ -789,7 +794,6 @@
                 }
             ],
             "angle": 22.5,
-            "lengthFactor": null,
             "tokens": "F+-[]"
         }
     ]

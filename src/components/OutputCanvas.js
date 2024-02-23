@@ -5,20 +5,22 @@ import { AlgorithmContext } from "../contexts/AlgorithmContext";
 import { DrawingSettingsContext } from "../contexts/DrawingSettingsContext";
 
 class PathSegment {
-    constructor(x1, y1, x2, y2) {
+
+    constructor(x1, y1, x2, y2, lineWidth = 1) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        this.lineWidth = lineWidth;
     }
 }
 
 function OutputCanvas(props) {
     const { dark, getColour } = useContext(ThemeContext);
     const { rules, output, inputConfirmed, displayedStep } = useContext(AlgorithmContext);
-    const { lineWidth, deltaAngle, startingAngle, lengthFactor, tokens } = useContext(DrawingSettingsContext);
+    const { lineWidth, deltaAngle, startingAngle, lengthFactor, widthFactor, tokens } = useContext(DrawingSettingsContext);
     const [ canvasWidth, setCanvasWidth ] = useState(600);
-    const [ canvasHeight, setCanvasHeight ] = useState(500);
+    const [ canvasHeight, setCanvasHeight ] = useState(600);
     const [ pathSegments, setPathSegments ] = useState([]);
     const [ pathDimensions, setPathDimensions ] = useState([]);         // rectangle [x1, y1, x2, y2]
     const [ currentZoom, setCurrentZoom ] = useState(0.8);
@@ -34,6 +36,7 @@ function OutputCanvas(props) {
     const minZoom = 0.25;
     const maxZoom = 40;
     const zoomSensitivity = 0.001;
+    let drawingLineWidth = 1;
 
     const clearCanvas = () => {
         const ctx = canvasRef.current.getContext("2d");
@@ -45,7 +48,7 @@ function OutputCanvas(props) {
     const calculatePath = () => {
         if (output === null || output.length === 0) return;
 
-        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI, lineLength = initialLineLength;
+        let x = 0, y = 0, angle = startingAngle / 180 * Math.PI, lineLength = initialLineLength, lineWidth = 1;
         let minX = Number.MAX_VALUE, minY = Number.MAX_VALUE, maxX = Number.MIN_VALUE, maxY = Number.MIN_VALUE;
         let posStack = [];
         let newPathSegments = [];
@@ -56,7 +59,7 @@ function OutputCanvas(props) {
                     const x1 = x, y1 = y;
                     x += lineLength * Math.cos(angle);
                     y += lineLength * Math.sin(angle);
-                    newPathSegments.push(new PathSegment(x1, y1, x, y));
+                    newPathSegments.push(new PathSegment(x1, y1, x, y, lineWidth));
                     break;
                 case tokens.forwardNoDraw.char:
                     x += lineLength * Math.cos(angle);
@@ -70,7 +73,7 @@ function OutputCanvas(props) {
                     break;
                 case tokens.pushPos.char:
                     posStack.push({ 
-                        x: x, y: y, angle: angle, lineLength: lineLength
+                        x: x, y: y, angle: angle, lineLength: lineLength, lineWidth: lineWidth
                      });
                     break;
                 case tokens.popPos.char:
@@ -79,12 +82,15 @@ function OutputCanvas(props) {
                     y = pos.y;
                     angle = pos.angle;
                     lineLength = pos.lineLength;
+                    lineWidth = pos.lineWidth;
                     break;
                 case tokens.multLength.char:
                     lineLength *= lengthFactor;
+                    lineWidth *= widthFactor;
                     break;
                 case tokens.divLength.char:
                     lineLength /= lengthFactor;
+                    lineWidth /= widthFactor;
                     break;
             }
 
@@ -124,7 +130,8 @@ function OutputCanvas(props) {
         ctx.translate(-minX - (maxX - minX) / 2, -minY - (maxY - minY) / 2);        // center drawing
         ctx.translate(viewportPanX, viewportPanY);          // panning
         
-        ctx.lineWidth = lineWidth / (currentZoom + 0.4) * ((Math.min(maxX - minX, maxY - minY) / 1000) + 1);
+        drawingLineWidth = lineWidth / (currentZoom + 0.4) * ((Math.min(maxX - minX, maxY - minY) / 1000) + 1);
+        ctx.lineWidth = drawingLineWidth;
     }
 
     const drawPath = () => {
@@ -138,6 +145,7 @@ function OutputCanvas(props) {
         for (let segment of pathSegments) {
             ctx.beginPath();
             ctx.moveTo(segment.x1, segment.y1);
+            ctx.lineWidth = drawingLineWidth * segment.lineWidth;
             ctx.lineTo(segment.x2, segment.y2);
             ctx.stroke();
         }

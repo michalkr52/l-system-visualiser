@@ -3,20 +3,24 @@ import { useState } from "react";
 
 function RecipeCard(props) {
     const { recipe, onLoad } = props;
-    const { name, group, notes, axiom, rules, angle, tokens, lengthFactor } = recipe;
-    const image = require("../assets/recipe-placeholder.png");
+    const { name, group, notes, axiom, rules, angle, tokens, lengthFactor, widthFactor, imageName } = recipe;
     const [ expanded, setExpanded ] = useState(false);
+
+    const imageDirPath = process.env.PUBLIC_URL + "/recipe-icons/";
+    const imagePath = imageName ? imageDirPath + imageName : imageDirPath + "recipe-placeholder.png";
 
     return (
         <div className="recipe-card">
             <div className="recipe-main">
                 <div className="recipe-card-left">
                     <div className="recipe-name">{name}</div>
-                    <div className="recipe-group">{group}</div>
-                    <div className="recipe-tokens">{tokens}</div>
+                    { group ? 
+                        <div className="recipe-group">{group}</div>
+                    : "" }
+                    <div className="recipe-tokens">Tokens: {tokens}</div>
                 </div>
                 <button className="button recipe-load-button" onClick={onLoad}>Load</button>
-                <img className="recipe-image" src={image} alt={name} />
+                <img className="recipe-image" src={imagePath} alt={name} />
                 { expanded ?
                     <button className="button recipe-expand" onClick={() => setExpanded(false)}>&#x25B2;</button>
                 :

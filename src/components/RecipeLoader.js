@@ -7,7 +7,7 @@ import { AlgorithmContext } from "../contexts/AlgorithmContext";
 import RecipeCard from "./RecipeCard";
 
 function RecipeLoader() {
-    const { setDeltaAngle, setLengthFactor, resetTokens } = useContext(DrawingSettingsContext);
+    const { setDeltaAngle, setLengthFactor, setWidthFactor, resetTokens } = useContext(DrawingSettingsContext);
     const { rules, setAxiom, setRules, onConfirm } = useContext(AlgorithmContext);
 
     const recipes = data.recipes;
@@ -21,8 +21,10 @@ function RecipeLoader() {
     const loadRecipe = (recipe) => {
         setIsLoading(true);
         resetTokens();
-        if (recipe.angle !== null) setDeltaAngle(recipe.angle);
-        if (recipe.lengthFactor !== null) setLengthFactor(recipe.lengthFactor);
+        if (recipe.angle) setDeltaAngle(recipe.angle);
+        if (recipe.lengthFactor) setLengthFactor(recipe.lengthFactor);
+        if (recipe.widthFactor) setWidthFactor(recipe.widthFactor);
+        else if (!recipe.widthFactor && recipe.lengthFactor) setWidthFactor(recipe.lengthFactor);
         setAxiom(recipe.axiom);
         setRules(recipe.rules);
     };
